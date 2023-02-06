@@ -1,0 +1,19 @@
+{
+  "name": "quick-moko",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boakaidorborkamara/quick-moko.git"
+  },
+  "author": "Boakai Dorbor Kamara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boakaidorborkamara/quick-moko/issues"
+  },
+  "homepage": "https://github.com/boakaidorborkamara/quick-moko#readme"
+}
