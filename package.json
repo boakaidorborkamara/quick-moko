@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/boakaidorborkamara/quick-moko/issues"
   },
-  "homepage": "https://github.com/boakaidorborkamara/quick-moko#readme"
+  "homepage": "https://github.com/boakaidorborkamara/quick-moko#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
