@@ -414,18 +414,18 @@ h3 {
   font-size: 14px;
   font-weight: 400;
   border: 0;
-  border: 1px solid #33D4D6;
+  border: 1px solid #008037;
   text-align: center;
-  color: #33D4D6 !important;
+  color: #008037 !important;
   text-transform: uppercase;
   cursor: pointer;
 }
 
 /* line 15, ../../Arafath/CL/December/234. Finance/HTML/scss/_btn.scss */
 .boxed-btn:hover {
-  background: #33D4D6;
+  background: #008037;
   color: #fff !important;
-  border: 1px solid #33D4D6;
+  border: 1px solid #008037;
 }
 
 /* line 20, ../../Arafath/CL/December/234. Finance/HTML/scss/_btn.scss */
@@ -436,7 +436,7 @@ h3 {
 /* line 24, ../../Arafath/CL/December/234. Finance/HTML/scss/_btn.scss */
 .boxed-btn3 {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#F91842+0,fd8e5e+100 */
-  background: #33D4D6;
+  background: #008037;
   color: #fff;
   display: inline-block;
   padding: 11px 29px 13px 29px;
@@ -460,8 +460,8 @@ h3 {
 
 /* line 43, ../../Arafath/CL/December/234. Finance/HTML/scss/_btn.scss */
 .boxed-btn3:hover {
-  color: #33D4D6 !important;
-  border: 1px solid #33D4D6;
+  color: #008037 !important;
+  border: 1px solid #008037;
   background: transparent;
 }
 
@@ -488,18 +488,18 @@ h3 {
   -o-transition: 0.3s;
   transition: 0.3s;
   cursor: pointer;
-  color: #33D4D6 !important;
-  border: 1px solid #33D4D6;
+  color: #008037 !important;
+  border: 1px solid #008037;
   background: transparent;
 }
 
 /* line 67, ../../Arafath/CL/December/234. Finance/HTML/scss/_btn.scss */
 .boxed-btn4:hover {
   color: #fff !important;
-  border: 1px solid #33D4D6;
+  border: 1px solid #008037;
   background: transparent;
   border: 0;
-  background: #33D4D6;
+  background: #008037;
   border: 1px solid transparent;
 }
 
@@ -628,14 +628,14 @@ h3 {
 
 /* line 164, ../../Arafath/CL/December/234. Finance/HTML/scss/_btn.scss */
 .book_now:hover {
-  background: #009DFF;
+  background: #008037;
   color: #fff;
 }
 
 /* line 2, ../../Arafath/CL/December/234. Finance/HTML/scss/_section_title.scss */
 .section_title span {
   display: inline-block;
-  background: #33D4D6;
+  background: #008037;
   width: 60px;
   height: 3px;
   -webkit-border-radius: 2px;
@@ -1084,7 +1084,7 @@ h3 {
 
 /* line 151, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu {
-  text-align: center;
+  text-align: right;
 }
 
 /* line 154, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
@@ -3035,7 +3035,7 @@ p #amount {
 
 /* line 163, ../../Arafath/CL/December/234. Finance/HTML/scss/_footer.scss */
 .footer .copy-right_text .copy_right a {
-  color: #0A8CFF;
+  color: #008037;
 }
 
 /* line 168, ../../Arafath/CL/December/234. Finance/HTML/scss/_footer.scss */
@@ -3094,9 +3094,9 @@ p #amount {
 /* line 201, ../../Arafath/CL/December/234. Finance/HTML/scss/_footer.scss */
 .footer .socail_links ul li:hover a {
   color: #fff !important;
-  background: #0A8CFF;
+  background: #008037;
   border-color: transparent;
-  border: 1px solid #0A8CFF;
+  border: 1px solid #008037;
 }
 
 /* line 1, ../../Arafath/CL/December/234. Finance/HTML/scss/_bradcam.scss */
@@ -3531,7 +3531,7 @@ p #amount {
 
 /* line 1, ../../Arafath/CL/December/234. Finance/HTML/scss/_loan.scss */
 .apply_loan {
-  background-image: url(../img/banner/loan.png);
+  background-image: url(../img/banner/patient.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   padding: 137px 0;
@@ -6910,3 +6910,16 @@ h6 {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+/* personal css  */
+.works_area span{
+  background-color: #008037 !important;
+  color: white !important;
+}
+
+
+.sliding-logo{
+  width: 70% !important;
+}
