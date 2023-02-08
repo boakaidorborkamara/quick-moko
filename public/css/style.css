@@ -901,7 +901,7 @@ h3 {
 /* line 16, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
 .header-area .main-header-area {
   background: #fff;
-  background: transparent;
+  /* background: transparent; */
   padding: 0px 150px;
 }
 
@@ -1110,7 +1110,7 @@ h3 {
 
 /* line 167, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu ul li a {
-  color: #fff;
+  color: #152349;
   font-size: 15px;
   text-transform: capitalize;
   font-weight: 500;
@@ -1156,7 +1156,10 @@ h3 {
 
 /* line 215, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu ul li a:hover {
-  color: #33D4D6;
+  background-color: #008037;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: white;
 }
 
 /* line 219, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
@@ -1360,7 +1363,7 @@ h3 {
 
 /* line 1, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
 .slider_bg_1 {
-  background-image: url(../img/banner/banner.png);
+  background-image: url(../img/banner/banner.jpg);
 }
 
 /* line 4, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
