@@ -2,3 +2,6 @@
 function displayRegistrationPage(req,res){
     return res.render('../views/register');
 }
+
+
+module.exports = displayRegistrationPage
