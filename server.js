@@ -17,10 +17,12 @@ app.use(express.static("public"));
 const index_router = require('./router/index_router');
 const registration_router = require('./router/registeration_router');
 const login_router = require('./router/login_router');
+const dashboard_router = require('./router/dashboard_router');
 
 app.use(index_router);
 app.use(registration_router);
 app.use(login_router);
+app.use(dashboard_router);
 
 
 app.listen(PORT, ()=>{
