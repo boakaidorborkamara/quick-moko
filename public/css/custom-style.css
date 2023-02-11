@@ -1,0 +1,14 @@
+#leftSidebar{
+   background-color:#152349 !important;
+   color: white !important;
+}
+
+
+#leftSidebar li a{
+    color: white !important;
+}
+
+
+#leftSidebar li a:hover{
+    color: #152349  !important;
+}
