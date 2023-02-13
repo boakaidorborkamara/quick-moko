@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>            
     </div>
     <!--/ bradcam_area  -->
     
@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
-                    <form action="#" class="apply_form">
+                    <form action="#" class="apply_form" id="registration-form">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="apply_info_text text-left">
@@ -42,107 +42,147 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="First Name">
+                                    <input type="text" placeholder="First Name*" value="Boakai" required id="first-name">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Middle Name">
+                                    <input type="text" placeholder="Middle Name" value="Dobor" id="middle-name">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Last Name">
+                                    <input type="text" placeholder="Last Name*" value="Kamara" required id="last-name">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Date of Birth">
+                                    <input type="text" placeholder="Date of Birth*" value="2/3/2020" required id="date-of-birth">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Home Address">
+                                    <input type="text" placeholder="Home Address*" value="Kebbah" required id="home-address">
                                 </div>
                             </div>
-                    
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <select class="wide">
-                                        <option data-display="Purpose">Accept Salary Through Mobile Money</option>
-                                        <option value="1">Yes</option>
-                                        <option value="2">No</option>
+                                    <input type="text" placeholder="Contact Number*" value="089393" required id="contact-number">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single_field">
+                                    <input type="text" placeholder="Position at Job*" value="Devloper" required id="position">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single_field">
+                                    <select class="wide" id="salary-acceptance">
+                                        <option data-display="Accept Salary Through Mobile Money*">Accept Salary Through Mobile Money</option>
+                                        <option value="true" selected>Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single_field">
+                                    <input type="text" placeholder="Mobile Money Number*" value="0889399393" required id="mobile-money-number">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single_field">
+                                    <input type="number" placeholder="Salary Per Month*" value="800" required id="salary-per-month">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single_field">
+                                    <select class="wide" id="currency">
+                                        <option data-display="Currency*">Currency</option>
+                                        <option value="true">USD</option>
+                                        <option value="false" selected>LRD</option>
                                       </select>
                                 </div>
                             </div>
+                            
 
-
-                            <div class="col-lg-12 mt-2">
+                            <!-- employer's section  -->
+                            <div class="col-lg-12 mt-5">
                                 <div class="apply_info_text text-left">
                                     <h3>Employer Info</h3>
-                                    <!-- <p>We provide online instant cash loans with quick approval that suit your term length</p> -->
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Employer's Name">
+                                    <input type="text" placeholder="Employer's Name*" value="Easy Solar" required id="employer-name">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Employer's Address">
+                                    <input type="text" placeholder="Employer's Address*" value="Congo Town" required id="employer-address">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="HR Director Full Name">
+                                    <input type="text" placeholder="HR Director Full Name" value="Mary Bull" required id="hr-full-name">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="HR Director Home Address">
+                                    <input type="text" placeholder="HR Director Home Address*" value="Sinkor" required id="hr-home-address">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="HR Director Phone Number">
+                                    <input type="text" placeholder="HR Director Phone Number*" value="088038392" required id="hr-contact-number">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single_field">
+                                    <label for="">Employment Letter</label>
+                                    <input type="file" placeholder="Employment Letter" >
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single_field">
+                                    <label for="">Employment Contract</label>
+                                    <input type="file" placeholder="Employment Contract">
                                 </div>
                             </div>
 
-                            <div class="col-lg-12 mt-2">
+                            <!-- gurantor's section  -->
+                            <div class="col-lg-12 mt-5">
                                 <div class="apply_info_text text-left">
                                     <h3>Gurantor Info</h3>
-                                    <!-- <p>We provide online instant cash loans with quick approval that suit your term length</p> -->
                                 </div>
                             </div>
                            
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Gurantor Full Name">
+                                    <input type="text" placeholder="Gurantor Full Name*" value="Dorbor Kamara" required id="gurantor-fullname">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="date" placeholder="Gurantor Date of Birth">
+                                    <input type="date" placeholder="Gurantor Date of Birth*"  required value="02/08/2022" id="gurantor-dob">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Gurantor Home Address">
+                                    <input type="text" placeholder="Gurantor Home Address*" value="Barnersville" required id="gurantor-home-address">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Gurantor Phone Number">
+                                    <input type="text" placeholder="Gurantor Phone Number*" value="079933" required id="gurantor-phone-number">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <select class="wide">
+                                    <select class="wide" id="gurantor-relationship">
                                         <option data-display="Gurantor Relation to you">Gurantor Relation to you</option>
                                         <option value="1">Spouse</option>
                                         <option value="2">Mother</option>
-                                        <option value="2">Father</option>
+                                        <option value="2" selected>Father</option>
                                         <option value="2">Mother</option>
                                         <option value="2">Child</option>
                                       </select>
@@ -158,7 +198,7 @@
                                 <div class="single_field">
                                     <label for="">Gurantor Government Issue ID Card</label>
                                     <input type="file" placeholder="Gurantor Government Issue ID Card">
-                            </div>
+                                </div>
                             </div>
                             <!-- <div class="col-md-12">
                                 <div class="single_field">
@@ -206,11 +246,11 @@
                             </div> -->
                             
                             <div class="col-md-12 my-3">
-                                <input type="checkbox" id="terms-and-policy" name="Terms & Policy" value="Terms & Policy" />
-                                <label for="terms-and-policy">Accept Terms & Policy</label>
+                                <input type="checkbox" id="policy" name="Terms & Policy" value="True"  checked/>
+                                <label for="policy">Accept Terms & Policy</label>
                             </div>
                             <div class="col-md-12">
-                                <div class="submit_btn">
+                                <div class="submit_btn" id="registration-btn">
                                     <button class="boxed-btn3" type="submit">Register</button>
                                 </div>
                             </div>
@@ -262,6 +302,7 @@
 
 
     <script src="js/main.js"></script>
+    <script src="js/registration-form.js"></script>
 
 </body>
 
