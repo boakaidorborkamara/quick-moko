@@ -83,6 +83,6 @@ function getFrontEndData (event){
 
 
 //send data to backend api
-function submitFronEndData(data){
+// function submitFronEndData(data){
 
-}
+// }
