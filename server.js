@@ -11,6 +11,8 @@ app.set('view engine', 'ejs');
 
 // serve images, css, js, etc 
 app.use(express.static("public"));
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 
 
 // ROUTES 

@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="First Name*" value="Boakai" required id="first-name">
+                                    <input type="text" placeholder="First Name*" value="Boakai" required minlength="2" id="first-name">
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -52,27 +52,27 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Last Name*" value="Kamara" required id="last-name">
+                                    <input type="text" placeholder="Last Name*" value="Kamara" required minlength="2" id="last-name">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Date of Birth*" value="2/3/2020" required id="date-of-birth">
+                                    <input type="date" placeholder="Date of Birth*" value="2/3/2020" required id="date-of-birth">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Home Address*" value="Kebbah" required id="home-address">
+                                    <input type="text" placeholder="Home Address*" value="Kebbah" required minlength="2" id="home-address">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Contact Number*" value="089393" required id="contact-number">
+                                    <input type="tel" placeholder="Contact Number*" value="089393" required id="contact-number">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Position at Job*" value="Devloper" required id="position">
+                                    <input type="text" placeholder="Position at Job*" value="Developer" required minlength="2" id="position">
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -86,7 +86,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Mobile Money Number*" value="0889399393" required id="mobile-money-number">
+                                    <input type="tel" placeholder="Mobile Money Number*" value="0889399393" required id="mobile-money-number">
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -98,9 +98,9 @@
                                 <div class="single_field">
                                     <select class="wide" id="currency">
                                         <option data-display="Currency*">Currency</option>
-                                        <option value="true">USD</option>
-                                        <option value="false" selected>LRD</option>
-                                      </select>
+                                        <option value="USD">USD</option>
+                                        <option value="LRD" selected>LRD</option>
+                                    </select>
                                 </div>
                             </div>
                             
@@ -113,22 +113,22 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Employer's Name*" value="Easy Solar" required id="employer-name">
+                                    <input type="text" placeholder="Employer's Name*" value="Easy Solar" required minlength="2" id="employer-name">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Employer's Address*" value="Congo Town" required id="employer-address">
+                                    <input type="text" placeholder="Employer's Address*" value="Congo Town" required minlength="2" id="employer-address">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="HR Director Full Name" value="Mary Bull" required id="hr-full-name">
+                                    <input type="text" placeholder="HR Director Full Name" value="Mary Bull" required minlength="2" id="hr-full-name">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="HR Director Home Address*" value="Sinkor" required id="hr-home-address">
+                                    <input type="text" placeholder="HR Director Home Address*" value="Sinkor" required minlength="2" id="hr-home-address">
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -138,27 +138,27 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <label for="">Employment Letter</label>
-                                    <input type="file" placeholder="Employment Letter" >
+                                    <!-- <label for="">Employment Letter</label> -->
+                                    <input type="text" placeholder="Paste link from Google Drive" required >
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
                                     <label for="">Employment Contract</label>
-                                    <input type="file" placeholder="Employment Contract">
+                                    <input type="text" placeholder="Paste link from Google Drive" required>
                                 </div>
                             </div>
 
-                            <!-- gurantor's section  -->
+                            <!-- guarantor's section  -->
                             <div class="col-lg-12 mt-5">
                                 <div class="apply_info_text text-left">
-                                    <h3>Gurantor Info</h3>
+                                    <h3>Guarantor Info</h3>
                                 </div>
                             </div>
                            
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Gurantor Full Name*" value="Dorbor Kamara" required id="gurantor-fullname">
+                                    <input type="text" placeholder="Gurantor Full Name*" value="Dorbor Kamara" required minlength="2" id="gurantor-fullname">
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -168,24 +168,17 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Gurantor Home Address*" value="Barnersville" required id="gurantor-home-address">
+                                    <input type="text" placeholder="Gurantor Home Address*" value="Barnersville" required minlength="2" id="gurantor-home-address">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <input type="text" placeholder="Gurantor Phone Number*" value="079933" required id="gurantor-phone-number">
+                                    <input type="tel" placeholder="Gurantor Phone Number*" value="079933" required id="gurantor-phone-number">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <select class="wide" id="gurantor-relationship">
-                                        <option data-display="Gurantor Relation to you">Gurantor Relation to you</option>
-                                        <option value="1">Spouse</option>
-                                        <option value="2">Mother</option>
-                                        <option value="2" selected>Father</option>
-                                        <option value="2">Mother</option>
-                                        <option value="2">Child</option>
-                                      </select>
+                                    <input type="tex" placeholder="Gurantor Relationship*" value="Father" required id="gurantor-relationship">
                                 </div>
                             </div>
                             <div class="col-md-12">
