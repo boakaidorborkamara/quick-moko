@@ -6923,3 +6923,8 @@ h6 {
 .sliding-logo{
   width: 70% !important;
 }
+
+
+input:focus{
+  border: 1px solid black !important;
+}
