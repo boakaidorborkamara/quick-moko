@@ -31,16 +31,20 @@ console.log(employment_contract, employment_letter);
 
 
 // Gurantor Details fields 
-let gurantor_fullname = document.getElementById('gurantor-fullname');
-let gurantor_date_of_birth = document.getElementById('gurantor-dob');
-let gurantor_home_address = document.getElementById('gurantor-home-address');
-let gurantor_phone_number = document.getElementById('gurantor-phone-number');
-let gurantor_relationship_to_creditor = document.getElementById('gurantor-relationship');
+let guarantor_fullname = document.getElementById('gurantor-fullname');
+let guarantor_date_of_birth = document.getElementById('gurantor-dob');
+let guarantor_home_address = document.getElementById('gurantor-home-address');
+let guarantor_phone_number = document.getElementById('gurantor-phone-number');
+let guarantor_relationship_to_creditor = document.getElementById('gurantor-relationship');
 let mou_from_guarantor = document.getElementById('guarantor-mou');
 let guarantor_government_issued_id = document.getElementById('guarantor-id-card');
 let policy = document.getElementById('policy');
 console.log(mou_from_guarantor, guarantor_government_issued_id);
 // console.log(gurantor_fullname, gurantor_dob, gurantor_home_address, gurantor_phone_number, gurantor_relationship, policy)
+
+let result_area = document.getElementById('result-area');
+let result_content = document.getElementById('result-content');
+console.log(result_area);
 
 
 //Will save extracted data here
@@ -48,8 +52,6 @@ let data = {};
 
 
 registration_form.addEventListener('submit', getFrontEndData);
-
-
 
 
 
@@ -83,11 +85,11 @@ function getFrontEndData (event){
     data.employment_letter = employment_letter.value;
     data.employment_contract = employment_contract.value;
     //gurantor info
-    data.gurantor_fullname = gurantor_fullname.value;
-    data.gurantor_date_of_birth = gurantor_date_of_birth.value
-    data.gurantor_home_address = gurantor_home_address.value;
-    data.gurantor_phone_number = gurantor_phone_number.value;
-    data.gurantor_relationship_to_creditor = gurantor_relationship_to_creditor.value;
+    data.guarantor_fullname = guarantor_fullname.value;
+    data.guarantor_date_of_birth = guarantor_date_of_birth.value
+    data.guarantor_home_address = guarantor_home_address.value;
+    data.guarantor_phone_number = guarantor_phone_number.value;
+    data.guarantor_relationship_to_creditor = guarantor_relationship_to_creditor.value;
     // data.policy = policy.value;
 
     console.log(data);
@@ -101,9 +103,27 @@ function getFrontEndData (event){
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify(data)
+
     })
   .then((response) => response.json())
-  .then((data) => console.log(data));
+  .then((data) => {
+    console.log(data)
+
+    // scroll at the top of the page to show alert 
+    window.scrollTo(0,0);
+
+    if(data){
+
+        if(data.code == 0){
+            result_area.style.display = "d-flex";
+            result_content.innerHTML = "Registration Successful";
+            // window.scrollTo(0,0);
+        }
+        
+        return;
+    }
+    alert("Error, try again!")
+  });
 
     return data;
 
