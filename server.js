@@ -3,7 +3,7 @@ const app = express();
 
 
 // PORT 
-const PORT = process.env.PORT || 3600;
+const PORT = process.env.PORT || 3700;
 
 
 // set the view engine to ejs

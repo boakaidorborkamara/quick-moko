@@ -14,28 +14,35 @@ router.post('/register', (req,res)=>{
     // console.log(req.body);
 
     let data = req.body;
-    // data = JSON.stringify(data);
-    // console.log(data);
+    console.log(data);
 
     let result = "";
 
     (async()=>{
+
       try{
-        await axios.post('https://quickmokoapi.glitch.me/api/v1/clients', data)
+        console.log("Async fnx running");
+        console.log("Async fnx running in try peri");
+
+        await axios.post('http://localhost:3000/api/v1/clients', data)
         .then(function (response) {
-          console.log("RESPONSE", response.data);
-          result = response.data
+          console.log(response.data);
+          result = response.data;
+          res.send(result);
         })
-        .catch(function (error) {
-          console.log(error);
-        });
+        
 
 
-       res.send(JSON.stringify(result));
+        // result = await axios.post('https://quickmokoapi.glitch.me/api/v1/clients', data);
+        // console.log(result);
+  
+        // res.send(result);
       }
-      catch(error){
-        console.log(error);
+      catch(err){
+        console.log(err); 
+        res.send(err);
       }
+     
     })();
 })
 

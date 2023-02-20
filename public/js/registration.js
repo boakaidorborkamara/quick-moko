@@ -15,9 +15,6 @@ let salary_deposit_to_mobile_money = document.getElementById('salary-acceptance'
 let mobile_money_number = document.getElementById('mobile-money-number');
 let monthly_salary = document.getElementById('salary-per-month');
 let currency = document.getElementById('currency');
-// console.log(first_name, middle_name, last_name, date_of_birth, home_address, contact_number, position, salary_payment_means, mobile_money_number, salary_per_month, currency);
-
-
 //Employer Details field
 let employer_name = document.getElementById('employer-name');
 let employer_address = document.getElementById('employer-address');
@@ -27,9 +24,6 @@ let hr_phone_number = document.getElementById('hr-contact-number');
 let employment_letter = document.getElementById('employment-letter');
 let employment_contract = document.getElementById('employment-contract');
 console.log(employment_contract, employment_letter);
-// console.log(employer_name, employer_address, hr_full_name, hr_home_address, hr_contact_number);
-
-
 // Gurantor Details fields 
 let guarantor_fullname = document.getElementById('gurantor-fullname');
 let guarantor_date_of_birth = document.getElementById('gurantor-dob');
@@ -40,26 +34,29 @@ let mou_from_guarantor = document.getElementById('guarantor-mou');
 let guarantor_government_issued_id = document.getElementById('guarantor-id-card');
 let policy = document.getElementById('policy');
 console.log(mou_from_guarantor, guarantor_government_issued_id);
-// console.log(gurantor_fullname, gurantor_dob, gurantor_home_address, gurantor_phone_number, gurantor_relationship, policy)
-
+// result area 
 let result_area = document.getElementById('result-area');
 let result_content = document.getElementById('result-content');
-console.log(result_area);
+
+
+
+
+
+///////////////////////////////////////////////////////////////
 
 
 //Will save extracted data here
 let data = {};
 
+//implement submission of data when registration btn is clicked
+registration_form.addEventListener('submit', sendDataToBackEnd);
 
-registration_form.addEventListener('submit', getFrontEndData);
 
+//////////////////////////////////////////////////////////////
 
 
 // extract data from the form and sanitize it 
-function getFrontEndData (event){
-
-    // prevent form default behaviour
-    event.preventDefault();
+function getFrontEndData (){
 
 
     // extract values from field and add it to data object 
@@ -92,62 +89,90 @@ function getFrontEndData (event){
     data.guarantor_relationship_to_creditor = guarantor_relationship_to_creditor.value;
     // data.policy = policy.value;
 
-    console.log(data);
 
-    let url = '/register';
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: JSON.stringify(data)
-
-    })
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data)
-
-    // scroll at the top of the page to show alert 
-    window.scrollTo(0,0);
-
-    if(data){
-
-        if(data.code == 0){
-            result_area.style.display = "d-flex";
-            result_content.innerHTML = "Registration Successful";
-            // window.scrollTo(0,0);
-        }
-        
-        return;
-    }
-    alert("Error, try again!")
-  });
 
     return data;
 
 };
 
-// function getSeletedValueFromDropDown(){
 
-// }
+/////////////////////////////////////////////////////////////
 
 
 //send data to backend api
-// function submitFronEndData(data){
+function sendDataToBackEnd(event){
 
-// }
+    // prevent form default behaviour
+    event.preventDefault();
 
-// let url = '/register';
 
-// fetch(url, {
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/json'
-//         // 'Content-Type': 'application/x-www-form-urlencoded',
-//     },
-//     body: JSON.stringify(data)
-// })
-//   .then((response) => response.json())
-//   .then((data) => console.log(data));
+    // get data frontend data 
+    let frontend_data = getFrontEndData();
+    console.log('FRONTEND DATA', frontend_data);
+
+    let url = '/register';
+    
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(frontend_data)
+    })
+    .then((response) => response.json())
+    .then((data) => {
+    console.log('DATA', data)
+
+
+    // scroll at the top of the page to show result alert 
+    window.scrollTo(0,0);
+
+
+    // check if the result data returns
+    if(data){
+
+        if(data.code === 0){
+
+           
+            result_area.style.display = "d-flex";
+            result_area.style.backgroundColor = 'green';
+            result_area.style.color = 'white';
+            result_content.innerHTML = data.message;
+
+            setTimeout(()=>{
+                result_area.style.backgroundColor = 'white';
+                result_content.innerHTML = "";
+
+                // Take user back to homepage 
+                window.location.href = '/';
+
+            }, 5000);
+
+
+        }
+        else{
+
+
+            result_area.style.display = "d-flex";
+            result_area.style.backgroundColor = 'red';
+            result_area.style.color = 'white';
+            result_content.innerHTML = data.message;
+            
+            setTimeout(()=>{
+                result_area.style.backgroundColor = 'white';
+                result_content.innerHTML = "";
+            }, 3000);
+
+            
+        }
+        
+        
+        return;
+    }
+
+    // result_content.innerHTML = "Error, try again";
+    
+  });
+
+}
+
