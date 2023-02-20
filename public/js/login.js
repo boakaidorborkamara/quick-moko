@@ -3,22 +3,53 @@ let momo_number = document.getElementById('momo-number');
 let password = document.getElementById('password');
 console.log(login_form, momo_number, password);
 
-// safe extracted data here 
+
+// save extracted data here 
 let data = {};
 
 
-login_form.addEventListener('submit', getFrontEndData);
+//add functionality to submit btn 
+login_form.addEventListener('submit', submitData);
 
 
 
+////////////////////////////////////////////////////////////////////////////////
 
+
+// Extract data from form 
 function getFrontEndData(event){
-    event.preventDefault();
     
+    // add login data to data object 
     data.momo_number = momo_number.value;
     data.password = password.value;
 
-    console.log(data);
-
     return data;
+}
+
+
+//Submit frontend data to backend
+function submitData(event){
+
+    // remove default behavior of form 
+    event.preventDefault();
+
+    let data = getFrontEndData();
+
+    console.log(data)
+
+    let url = '/login';
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then((response) => response.json())
+    .then((data) => {
+    console.log('DATA', data)
+    });
+        
+  
 }
