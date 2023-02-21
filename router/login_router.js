@@ -11,9 +11,11 @@ router.get('/login', (req,res)=>{
 router.post('/login', (req, res)=>{
     // res.send({"message":"Adding new soon...."});
 
+    // frontend data 
     let data = req.body;
     console.log(data);
 
+    //store result after submission here
     let result = "";
 
     //send data to core api
@@ -24,13 +26,18 @@ router.post('/login', (req, res)=>{
         .then(function (response) {
           console.log(response.data);
           result = response.data;
+
           res.send(result);
         })
     
       }
-      catch(err){
-        console.log(err); 
-        res.send(err);
+      catch(error){
+
+        res.status(400).json({
+          message: "An error occurred",
+          error: error.message,
+        });
+
       }
      
     })();

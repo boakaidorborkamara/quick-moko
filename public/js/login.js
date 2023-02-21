@@ -48,7 +48,11 @@ function submitData(event){
     })
     .then((response) => response.json())
     .then((data) => {
-    console.log('DATA', data)
+        
+        console.log(data);
+          if(data.code === 0){
+            window.location.href = "/dashboard";
+          }
     });
         
   
