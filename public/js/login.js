@@ -1,7 +1,9 @@
 let login_form = document.getElementById('login-form');
 let momo_number = document.getElementById('momo-number');
 let password = document.getElementById('password');
-console.log(login_form, momo_number, password);
+let login_result_box = document.getElementById('login-result-box');
+// console.log(login_form, momo_number, password);
+// console.log(login_result_box);
 
 
 // save extracted data here 
@@ -11,7 +13,7 @@ let data = {};
 //add functionality to submit btn 
 login_form.addEventListener('submit', submitData);
 
-
+login_result_box.style.display = "none"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -50,9 +52,19 @@ function submitData(event){
     .then((data) => {
         
         console.log(data);
-          if(data.code === 0){
+        if(data.code === 0){
             window.location.href = "/dashboard";
-          }
+            return;
+        }
+
+        login_result_box.innerHTML = data.message;
+        
+        login_result_box.style.display = "block";
+        
+        setTimeout(() => {
+            login_result_box.style.display = "none";
+        }, 4000);
+
     });
         
   
