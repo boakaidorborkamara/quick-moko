@@ -144,7 +144,7 @@ function sendDataToBackEnd(event){
                 result_content.innerHTML = "";
 
                 // Take user back to homepage 
-                window.location.href = '/';
+                // window.location.href = '/';
 
             }, 5000);
 
