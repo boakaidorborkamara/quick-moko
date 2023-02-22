@@ -54,17 +54,22 @@ function submitData(event){
         
         console.log(data);
         if(data.code === 0){
-            window.location.href = "/dashboard";
+            window.location.href = data.redirectURL;
             return;
         }
 
+        
+        // display error messages 
         login_result_box.innerHTML = data.message;
         
         login_result_box.style.display = "block";
-        
+            
         setTimeout(() => {
             login_result_box.style.display = "none";
         }, 4000);
+        
+
+        
 
     });
         
