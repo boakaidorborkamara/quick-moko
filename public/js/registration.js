@@ -134,7 +134,7 @@ function sendDataToBackEnd(event){
 
         if(data.code === 0){
 
-           
+           //display result div with positive result
             result_area.innerHTML = data.message;
         
             result_area.style.display = "block";
@@ -147,6 +147,7 @@ function sendDataToBackEnd(event){
         }
         else{
 
+            //display result div with negative
             result_area.removeAttribute("class", "alert-success");
             result_area.setAttribute("class", "alert-danger");
             result_area.style.padding = "20px 10px 20px 30px";
