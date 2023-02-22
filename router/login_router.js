@@ -6,20 +6,26 @@ const jwtSecret = '9c1bcf23c2cd0fb8e0563fdd63343ec4220750129ae617d703383d6cfcf60
 
 
 
+// Enable display of login form 
 router.get('/login', (req,res)=>{
     res.render('../views/login');
 });
 
 
+////////////////////////////////////////////////////////////////////////
+
+
+//Enable collection of user login info while also allowing them to login
 router.post('/login', (req, res)=>{
-    // res.send({"message":"Adding new soon...."});
 
     // frontend data 
     let data = req.body;
     console.log(data);
 
+
     //store result after submission here
     let result = "";
+
 
     //send data to core api
     (async()=>{
@@ -27,9 +33,13 @@ router.post('/login', (req, res)=>{
       try{
         await axios.post('http://localhost:3000/api/v1/login', data)
         .then(function (response) {
-          // console.log(response.data);
+
+          // store data from response
           result = response.data;
 
+
+          // Check if user user credential was correct
+          console.log(result)
           if(result.code === 0){
 
             //configure and create a sign token
@@ -42,6 +52,7 @@ router.post('/login', (req, res)=>{
                 }
             );
 
+
             //  configure and send cookie to client 
             res.cookie("jwt", token, {
                 httpOnly: true,
@@ -51,12 +62,14 @@ router.post('/login', (req, res)=>{
 
             // add page redirection link to result object 
             result["redirectURL"] = "/dashboard";
-            console.log(result);
 
+            //send updated object
             res.send(result);
             return;
           }
 
+
+          //Send error messages
           res.send(result);
 
         })
@@ -72,6 +85,8 @@ router.post('/login', (req, res)=>{
       }
      
     })();
+
+
 })
 
 
