@@ -13,6 +13,7 @@ let data = {};
 //add functionality to submit btn 
 login_form.addEventListener('submit', submitData);
 
+// hide result area 
 login_result_box.style.display = "none"
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -39,7 +39,8 @@ let result_area = document.getElementById('result-area');
 let result_content = document.getElementById('result-content');
 
 
-
+// hide result area 
+result_area.style.display = "none";
 
 
 ///////////////////////////////////////////////////////////////
@@ -134,34 +135,29 @@ function sendDataToBackEnd(event){
         if(data.code === 0){
 
            
-            result_area.style.display = "d-flex";
-            result_area.style.backgroundColor = 'green';
-            result_area.style.color = 'white';
-            result_content.innerHTML = data.message;
-
-            setTimeout(()=>{
-                result_area.style.backgroundColor = 'white';
-                result_content.innerHTML = "";
-
-                // Take user back to homepage 
-                // window.location.href = '/';
-
+            result_area.innerHTML = data.message;
+        
+            result_area.style.display = "block";
+            
+            setTimeout(() => {
+                result_area.style.display = "none";
             }, 5000);
 
-
+            return;
         }
         else{
 
-
-            result_area.style.display = "d-flex";
-            result_area.style.backgroundColor = 'red';
-            result_area.style.color = 'white';
-            result_content.innerHTML = data.message;
+            result_area.removeAttribute("class", "alert-success");
+            result_area.setAttribute("class", "alert-danger");
+            result_area.style.padding = "20px 10px 20px 30px";
+            result_area.style.marginBottom = "20px"
+            result_area.innerHTML = data.message;
+        
+            result_area.style.display = "block";
             
-            setTimeout(()=>{
-                result_area.style.backgroundColor = 'white';
-                result_content.innerHTML = "";
-            }, 3000);
+            setTimeout(() => {
+                result_area.style.display = "none";
+            }, 5000);
 
             
         }
