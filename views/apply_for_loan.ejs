@@ -36,19 +36,20 @@
                           </div>
                           <div class="col-md-12">
                               <div class="single_field">
-                                  <!-- <label for="">How much you want?</label> -->
-                                  <input type="text" placeholder="How much you want?">
+                                  <label for="loan-amount">How much you want?</label>
+                                  <input type="number" id="loan-amount" required>
                               </div>
                           </div>
                           <div class="col-md-12">
                               <div class="single_field">
-                                  <!-- <label for="">When will you pay back?</label> -->
-                                  <input type="text" placeholder="When will you pay back?">
+                                  <label for="payment-date">When will you pay back?</label>
+                                  <input type="date"  id="payment-date">
                               </div>
                           </div>
                           <div class="col-md-12">
                             <div class="pay_text">
-                                <p>You have to pay back: <span>$0</span></p>
+                                
+                                <p><strong>You have to pay back: <span id="estimated-payment-result" style="color: red !important;">$0 LRD</span></strong> </p>
                             </div>
                           </div>
                           
