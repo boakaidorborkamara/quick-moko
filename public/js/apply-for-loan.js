@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 let loan_amount = document.getElementById("loan-amount");
 let payment_date = document.getElementById("payment-date");
 let estimated_payment_result = document.getElementById("estimated-payment-result");
@@ -43,6 +45,10 @@ loan_amount.addEventListener("input", ()=>{
 payment_date.addEventListener("input", estimatePayment)
 
 
+// amount to be pay back 
+let amount = 0;
+
+
 function estimatePayment(){
 
     if(loan_amount_value){
@@ -55,7 +61,7 @@ function estimatePayment(){
             console.log(days);
 
             let sub_calculation = 1+interest_rate*days ;
-            let amount = loan_amount_value * sub_calculation;
+            amount = loan_amount_value * sub_calculation;
 
             console.log(sub_calculation);
             console.log(amount);
@@ -93,14 +99,36 @@ function getNumberOfDays(start, end) {
 apply_for_loan_btn.addEventListener('click', ()=>{
 
     // display error messages 
-    result_area.innerHTML = "We are working on intergrating MoMo to receive your loans";
+    // result_area.innerHTML = "We are working on intergrating MoMo to receive your loans";
+    result_area.innerHTML = `Requested loan amount: ${loan_amount_value}`;
+
         
     result_area.style.display = "block";
         
     setTimeout(() => {
         result_area.style.display = "none";
         window.location.reload();
-    }, 4000);
+    }, 7000);
     
+
+   
     
 })
+
+
+// Implement payment for requested amount 
+function getRequestedCash(user_loan_amount){
+     
+     fetch("url",{
+        method:"POST",
+        body: loan_amount_value,
+        "Content-Type":"application/json"
+    })
+    .then(response => response.json())
+    .then((data)=>{
+        console.log(data);
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+}
