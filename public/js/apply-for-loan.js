@@ -1,6 +1,13 @@
 let loan_amount = document.getElementById("loan-amount");
 let payment_date = document.getElementById("payment-date");
 let estimated_payment_result = document.getElementById("estimated-payment-result");
+let apply_for_loan_btn = document.getElementById("apply-for-loan-btn");
+let result_area = document.getElementById("result-area");
+// hide result area 
+result_area.style.display = "none";
+
+
+
 let interest_rate = 0.0033;
 console.log(loan_amount, payment_date);
 
@@ -38,7 +45,7 @@ payment_date.addEventListener("input", estimatePayment)
 
 function estimatePayment(){
 
-    if(!loan_amount_value){
+    if(loan_amount_value){
 
             payment_date_value = payment_date.value;
             // alert(payment_date_value);
@@ -54,6 +61,8 @@ function estimatePayment(){
             console.log(amount);
 
             estimated_payment_result.innerHTML = `$${amount} LRD`;
+
+            return;
             
     }
 
@@ -79,4 +88,19 @@ function getNumberOfDays(start, end) {
     return diffInDays;
 }
 
-// alert("Working");
+
+
+apply_for_loan_btn.addEventListener('click', ()=>{
+
+    // display error messages 
+    result_area.innerHTML = "We are working on intergrating MoMo to receive your loans";
+        
+    result_area.style.display = "block";
+        
+    setTimeout(() => {
+        result_area.style.display = "none";
+        window.location.reload();
+    }, 4000);
+    
+    
+})
