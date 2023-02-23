@@ -141,6 +141,7 @@ function sendDataToBackEnd(event){
             
             setTimeout(() => {
                 result_area.style.display = "none";
+                window.location.href = "/";
             }, 5000);
 
             return;
