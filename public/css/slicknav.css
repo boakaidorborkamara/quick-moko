@@ -37,7 +37,8 @@
   .slicknav_menu .slicknav_icon-bar {
     display: block;
     width: 1.125em;
-    height: 0.125em;}
+    height: 0.125em;
+    color:white}
   .slicknav_menu:before {
     content: " ";
     display: table; }

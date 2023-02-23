@@ -8,7 +8,7 @@ const jwtSecret = "9c1bcf23c2cd0fb8e0563fdd63343ec4220750129ae617d703383d6cfcf60
 const {auth} = require('../middleware/auth')
 
 
-router.get('/dashboard', auth,  (req,res)=>{
+router.get('/dashboard',  (req,res)=>{
     const token = req.cookies.jwt;
     
     let dynamic_login_in_user_id = "";
@@ -16,6 +16,7 @@ router.get('/dashboard', auth,  (req,res)=>{
     jwt.verify(token, jwtSecret, (err, decodedToken) => {
         if (err) {
           console.log("Not authorized")
+          res.redirect("/")
           return
         } else {
           console.log("Logged in user", decodedToken);
