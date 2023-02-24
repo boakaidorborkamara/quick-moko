@@ -52,15 +52,38 @@ apply_for_loan_btn.addEventListener('click', ()=>{
 
     // display error messages 
     // result_area.innerHTML = "We are working on intergrating MoMo to receive your loans";
-    result_area.innerHTML = `Requested loan amount: ${loan_amount_value}`;
+    // result_area.innerHTML = `Requested loan amount: ${loan_amount_value}`;
 
         
-    result_area.style.display = "block";
+    // result_area.style.display = "block";
         
-    setTimeout(() => {
-        result_area.style.display = "none";
-        window.location.reload();
-    }, 7000);
+    // setTimeout(() => {
+    //     result_area.style.display = "none";
+    //     window.location.reload();
+    // }, 7000);
+    console.log("requesting for payments")
+    console.log(loan_amount_value)
+    // requestedCash(loan_amount_value);
+
+    //Request for loan
+    let url = "/request_loan"
+    let cash = {amount: loan_amount_value};
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cash)
+    })
+    .then((response) => response.json())
+    .then((data)=>{
+        console.log(data);
+        return data;
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
       
 })
 
@@ -130,18 +153,32 @@ function getDateUserRequestForAloan(){
 
 
 // Implement payment for requested amount 
-function getRequestedCash(user_loan_amount){
+async function requestedCash(amount){
      
-     fetch("url",{
-        method:"POST",
-        body: loan_amount_value,
-        "Content-Type":"application/json"
-    })
-    .then(response => response.json())
-    .then((data)=>{
-        console.log(data);
-    })
-    .catch((err)=>{
+    // let url = "http://localhost:3000/api/v1/receive_loan";
+    
+
+    let url = "/request_loan"
+    let cash = {cash_amount: amount};
+
+    try{
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(amount)
+        })
+        .then((response) => response.json())
+        .then((data)=>{
+            console.log(data);
+            return data;
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    }
+    catch(err){
         console.log(err);
-    })
+    }
 }
