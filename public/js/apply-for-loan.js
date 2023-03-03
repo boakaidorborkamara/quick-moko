@@ -67,14 +67,20 @@ apply_for_loan_btn.addEventListener('click', ()=>{
 
     //Request for loan
     let url = "/request_loan"
-    let cash = {amount: loan_amount_value};
+    let loan_info = {
+        loan_amount: loan_amount_value,
+        amount_to_payback: payback_amount,
+        transaction_date: loan_request_date,
+        due_date: payment_date_value};
+
+    console.log(loan_info)
 
     fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(cash)
+        body: JSON.stringify(loan_info)
     })
     .then((response) => response.json())
     .then((data)=>{

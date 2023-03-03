@@ -3,7 +3,7 @@
   <!-- head  -->
   <%- include('./partials/dashboard-head'); -%>
 
-  <% if (user) { %>
+  
     <body class="vertical  light  ">
       <div class="wrapper">
 
@@ -17,6 +17,10 @@
         <!-- main content section  -->
         <main role="main" class="main-content">
           <div class="container-fluid">
+
+
+            <!-- personal info section  -->
+            <% if (user) { %>
             <div class="row justify-content-center">
               <div class="col-12">
                 <div class="row align-items-center mb-2">
@@ -65,62 +69,71 @@
                     <!-- .card -->
                   </div> <!-- .col -->
                   
-                </div> <!-- .row -->
-                <div class="row">
-                  
-                  <div class="col-md-12 col-lg-12">
-                    <div class="card shadow">
-                      <div class="card-header">
-                        <strong class="card-title">Recent Loan Transaction</strong>
-                        <a class="float-right small text-muted" href="#!">View all</a>
-                      </div>
-                      <div class="card-body my-n2">
-                        <table class="table table-striped table-hover table-borderless">
-                          <thead>
-                            <tr>
-                              <th>Transaction ID</th>
-                              <th>Status</th>
-                              <th>Amount</th>
-                              <th>Currency</th>
-                              <th>Date</th>
-                              <!-- <th>Action</th> -->
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>848838373738</td>
-                              <th scope="col">Received</th>
-                              <td>200</td>
-                              <td>LRD</td>
-                              <td>02/05/2023</td>
-                              
-                            </tr>
-                            <tr>
-                              <td>q282877272772</td>
-                              <th scope="col" class="text-danger">Failed</th>
-
-                              <td>1000</td>
-                              <td>LRD</td>
-                              <td>02/05/2023</td>
-                              
-                            </tr>
-                            <tr>
-                              <td>247473737sj28</td>
-                              <th scope="col">Received</th>
-                              <td>1200</td>
-                              <td>LRD</td>
-                              <td>02/05/2023</td>
-                              
-                            </tr>
-                          
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div> <!-- Striped rows -->
-                </div> <!-- .row-->
-              </div> <!-- .col-12 -->
             </div> <!-- .row -->
+            <% } %>
+            <!-- personal info section ends  -->
+
+
+              <!-- RECENT LOAN TRANSACTIONS  -->
+            <% if (loan_transactions) { %>
+              <div class="row">
+                    
+                    <div class="col-md-12 col-lg-12">
+                      <div class="card shadow">
+                        <div class="card-header">
+                          <strong class="card-title">Recent Loan Transaction</strong>
+                          <a class="float-right small text-muted" href="#!">View all</a>
+                        </div>
+                        <div class="card-body my-n2">
+                          <table class="table table-striped table-hover table-borderless">
+                            <thead>
+                              <tr>
+                                <th>Transaction ID</th>
+                                <th>Status</th>
+                                <th>Amount</th>
+                                <th>Currency</th>
+                                <th>Date</th>
+                                <!-- <th>Action</th> -->
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><%= loan_transactions.loan_transaction.id  %></td>
+                                <th scope="col">Received</th>
+                                <td>200</td>
+                                <td>LRD</td>
+                                <td>02/05/2023</td>
+                                
+                              </tr>
+                              <tr>
+                                <td>q282877272772</td>
+                                <th scope="col" class="text-danger">Failed</th>
+
+                                <td>1000</td>
+                                <td>LRD</td>
+                                <td>02/05/2023</td>
+                                
+                              </tr>
+                              <tr>
+                                <td>247473737sj28</td>
+                                <th scope="col">Received</th>
+                                <td>1200</td>
+                                <td>LRD</td>
+                                <td>02/05/2023</td>
+                                
+                              </tr>
+                            
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div> <!-- Striped rows -->
+                  </div> <!-- .row-->
+                </div> <!-- .col-12 -->
+              </div> <!-- .row -->
+            <% } %>
+            <!-- Recent Loan transactions ends  -->
+
           </div> <!-- .container-fluid -->
           
           <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
@@ -497,5 +510,5 @@
         gtag('config', 'UA-56159088-1');
       </script>
     </body>
-  <% } %>
+ 
 </html>
