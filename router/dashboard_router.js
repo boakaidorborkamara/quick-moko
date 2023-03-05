@@ -34,7 +34,7 @@ router.get('/dashboard',  async (req,res)=>{
                 console.log(decodedToken);
                 await axios.get(`http://localhost:3000/api/v1/loan_transactions/${decodedToken.user_NIN_number}`)
                 .then((response)=>{
-                    user_loan_transactions = response.data;
+                    user_loan_transactions = response.data.loan_transaction;
                     // console.log("RESULT", response_result);
                     // res.render('../views/dashboard');
                     // res.render('../views/dashboard', {user:response_result});
