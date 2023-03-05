@@ -5,6 +5,7 @@ let estimated_payment_result = document.getElementById("estimated-payment-result
 let apply_for_loan_btn = document.getElementById("apply-for-loan-btn");
 let result_area = document.getElementById("result-area");
 
+alert("Working")
 
 // hide result area 
 result_area.style.display = "none";
