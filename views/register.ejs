@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>Register Now</h3>
+                        <!-- <h3>Register Now</h3> -->
                     </div>
                 </div>
             </div>
@@ -43,248 +43,46 @@
                             <!-- personal info  -->
                             <div class="col-lg-12">
                                 <div class="apply_info_text text-left">
-                                    <h3><strong>Personal Info</strong></h3>
+                                    <h1 class="text-center"><strong>Let's Get Started</strong></h1>
+                                    <p class="text-center">Provide basic personal info.</p>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <label for="first-name">First Name (Required*)</label>
-                                    <input type="text"  Name*" value="Dummy First Name"  required minlength="2" id="first-name">
+                                    <!-- <label for="first-name">First Name (Required*)</label> -->
+                                    <input type="text" placeholder="Fist Name (required*)"  required minlength="2" id="first-name">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <label for="middle-name">Middle Name</label>
-                                    <input type="text"   id="middle-name">
+                                    <!-- <label for="middle-name">Middle Name</label> -->
+                                    <input type="text" placeholder="Middle Name">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <label for="last-name">Last Name (Required*)</label>
-                                    <input type="text" value="Dummy Last Name"  required minlength="2" id="last-name">
+                                    <!-- <label for="last-name">Last Name (Required*)</label> -->
+                                    <input type="text" placeholder="Last Name (required*)"  required minlength="2" id="last-name">
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-12">
+                                <div class="single_field">
+                                    <label for="last-name" class="text-primary"><strong>You will receive an OTP to your phone via sms.</strong></label>
+                                    <input type="number" placeholder="Mobile Money Number"  required minlength="2" id="last-name">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <label for="date-of-birth">Date of Birth (Required*)</label>
-                                    <input type="date"   required id="date-of-birth">
+                                    <label for="last-name" class="text-primary"><strong>Make sure to enter a 4-digit PIN.</strong></label>
+                                    <input type="password" placeholder="PIN"  required minlength="2" id="last-name">
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="home-address">Home Address (Required*)</label>
-                                    <input type="text" value="Dummy Address"   required minlength="2" id="home-address">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="contact-number">Contact Number (Required*)</label>
-                                <div class="single_field">
-                                    <input type="tel"  placeholder="Format: +231880446208" required id="contact-number">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="nin-number">National ID Card/NIN Number (Required*)</label>
-                                    <input type="number" id="nin-number" required minlength="10"  >
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="national-id-card">National ID Card</label>
-                                    <input type="file" id="national-id-card">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="position">What is your current Position at Job? (Required*)</label>
-                                    <input type="text" value="Dummy Position"  required minlength="2" id="position">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="">Do you receive your salary through Mobile Money? (Required*)</label>
-                                    <select class="wide" id="salary-acceptance">
-                                        <option data-display="" disabled></option>
-                                        <option value="true">Yes</option>
-                                        <option value="false">No</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="mobile-money-number" >Mobile Money Number (Required*)</label>
-                                    <input type="tel" placeholder="Format: 0880446208" required id="mobile-money-number">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="salary-per-month">Salary per Month (Required*)</label>
-                                    <input type="number" value="200"  required id="salary-per-month">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="">Which currency are you paid with? (Required*)</label>
-                                    <select class="wide" id="currency">
-                                        <option data-display="" selected disabled></option>
-                                        <option value="USD">USD</option>
-                                        <option value="LRD" selected>LRD</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            
-                            <!-- employer's section  -->
-                            <div class="col-lg-12 mt-5">
-                                <div class="apply_info_text text-left">
-                                    <h3><strong>Employer's Info</strong></h3>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="employer-name">Employer's Name (Required*)</label>
-                                    <input type="text" value="Dummy employer name" required minlength="2" id="employer-name">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="employer-address">Employer's Address (Required*)</label>
-                                    <input type="text" value="Dummy Employer Address"  required minlength="2" id="employer-address">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="hr-full-name">HR Full Name (Required*)</label>
-                                    <input type="text" value="Dummy HR Fullname"   required minlength="2" id="hr-full-name">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="hr-home-address">HR Home Address (Required*)</label>
-                                    <input type="text" value="Dummy Address"  required minlength="2" id="hr-home-address">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="hr-contact-number">HR Contact Number (Required*)</label>
-                                    <input type="text" value="00000"  required id="hr-contact-number">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="employment-letter">Employment Letter</label>
-                                    <input type="file" id="employment-letter">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="">Employment Contract</label>
-                                    <input type="file" id="employment-contract">
-                                </div>
-                            </div>
-
-                            <!-- guarantor's section  -->
-                            <div class="col-lg-12 mt-5">
-                                <div class="apply_info_text text-left">
-                                    <h3><strong>Guarantor's Info</strong></h3>
-                                </div>
-                            </div>
+                            </div> -->
                            
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="gurantor-fullname">Guarantor's Full Name (Required*)</label>
-                                    <input type="text" value="Dummy Guarantor Fullname"  required minlength="2" id="gurantor-fullname">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="gurantor-dob">Guarantor's Date of Birth (Required*)</label>
-                                    <input type="date"   required value="02/08/2022" id="gurantor-dob">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="gurantor-phone-number">Guarantor's Contact Number (Required*)</label>
-                                    <input type="tel" value="8388" required id="gurantor-phone-number">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="gurantor-home-address">Guarantor's Home Address (Required*)</label>
-                                    <input type="text" value="Dummy Address"  required minlength="2" id="gurantor-home-address">
-                                </div>
-                            </div>
                             
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="gurantor-relationship">What is your Relationship to the Guarantor? (Required*)</label>
-                                    <input type="text" value="Father" placeholder="Gurantor Relationship*"  required id="gurantor-relationship">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="">MOU from Gurantor</label>
-                                    <input type="file" placeholder="MOU from Gurantor" id="guarantor-mou">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="">Gurantor Government Issue ID Card</label>
-                                    <input type="file" placeholder="Gurantor Government Issue ID Card" id="guarantor-id-card">
-                                </div>
-                            </div>
-
-
-                          
-                           
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="gurantor-fullname">Guarantor's Full Name (Required*)</label>
-                                    <input type="text" value="Dummy Guarantor Fullname"  required minlength="2" id="gurantor-fullname">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="gurantor-dob">Guarantor's Date of Birth (Required*)</label>
-                                    <input type="date"   required value="02/08/2022" id="gurantor-dob">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="gurantor-phone-number">Guarantor's Contact Number (Required*)</label>
-                                    <input type="tel" value="8388" required id="gurantor-phone-number">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="gurantor-home-address">Guarantor's Home Address (Required*)</label>
-                                    <input type="text" value="Dummy Address"  required minlength="2" id="gurantor-home-address">
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="gurantor-relationship">What is your Relationship to the Guarantor? (Required*)</label>
-                                    <input type="text" value="Father" placeholder="Gurantor Relationship*"  required id="gurantor-relationship">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="">MOU from Gurantor</label>
-                                    <input type="file" placeholder="MOU from Gurantor" id="guarantor-mou">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="">Gurantor Government Issue ID Card</label>
-                                    <input type="file" placeholder="Gurantor Government Issue ID Card" id="guarantor-id-card">
-                                </div>
-                            </div>
-                            <!-- credit score ends  -->
                             
                             <div class="col-md-12">
                                 <div class="submit_btn" id="registration-btn">
-                                    <button class="boxed-btn3" type="submit">Register</button>
+                                    <button class="boxed-btn3" type="button">Next</button>
                                 </div>
                             </div>
                         </div>
