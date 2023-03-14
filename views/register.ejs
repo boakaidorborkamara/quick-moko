@@ -34,7 +34,7 @@
                 <div class="col-lg-12">
 
         
-                    <div class="alert alert-success" role="alert" id="result-area">
+                    <div class="alert alert-success d-none" role="alert" id="result-area">
                         This is a danger alert—check it out!
                     </div>
 
@@ -43,35 +43,40 @@
                             <!-- personal info  -->
                             <div class="col-lg-12">
                                 <div class="apply_info_text text-left">
-                                    <h1 class="text-center"><strong>Let's Get Started</strong></h1>
-                                    <p class="text-center">Provide basic personal info.</p>
+                                    <h1 class="text-center" id="form-header"><strong>Let's Get Started</strong></h1>
+                                    <p class="text-center" id="form-body-copy">Provide basic personal info.</p>
                                 </div>
                             </div>
+                            <!-- first name  -->
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <!-- <label for="first-name">First Name (Required*)</label> -->
-                                    <input type="text" placeholder="Fist Name (required*)"  required minlength="2" id="first-name">
+                                    <input type="text" placeholder="First Name (required*)"  required minlength="2" id="first-name">
                                 </div>
                             </div>
+                            <!-- middle name  -->
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <!-- <label for="middle-name">Middle Name</label> -->
-                                    <input type="text" placeholder="Middle Name">
+                                    <input type="text" placeholder="Middle Name" id="middle-name">
                                 </div>
                             </div>
+                            <!-- last name  -->
                             <div class="col-md-12">
                                 <div class="single_field">
-                                    <!-- <label for="last-name">Last Name (Required*)</label> -->
                                     <input type="text" placeholder="Last Name (required*)"  required minlength="2" id="last-name">
+                                </div>
+                            </div>
+                            <!-- mobile money number  -->
+                            <div class="col-md-12">
+                                <div class="single_field ">
+                                    <input type="number" placeholder="Mobile Money Number (0880526256)" minlength="2" class="d-none" id="mobile-money-number">
                                 </div>
                             </div>
                             <!-- <div class="col-md-12">
                                 <div class="single_field">
-                                    <label for="last-name" class="text-primary"><strong>You will receive an OTP to your phone via sms.</strong></label>
-                                    <input type="number" placeholder="Mobile Money Number"  required minlength="2" id="last-name">
+                                    <input type="number" placeholder="Enter OTP Code"  required minlength="2" id="otp-code">
                                 </div>
-                            </div>
-                            <div class="col-md-12">
+                            </div> -->
+                            <!-- <div class="col-md-12">
                                 <div class="single_field">
                                     <label for="last-name" class="text-primary"><strong>Make sure to enter a 4-digit PIN.</strong></label>
                                     <input type="password" placeholder="PIN"  required minlength="2" id="last-name">
@@ -82,7 +87,7 @@
                             
                             <div class="col-md-12">
                                 <div class="submit_btn" id="registration-btn">
-                                    <button class="boxed-btn3" type="button">Next</button>
+                                    <button class="boxed-btn3" type="submit">Next</button>
                                 </div>
                             </div>
                         </div>
