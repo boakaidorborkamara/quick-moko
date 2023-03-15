@@ -39,7 +39,8 @@
                     </div>
 
                     <form action="#" class="apply_form" id="registration-form">
-                        <div class="row">
+                        <!-- step 1 -->
+                        <div class="row" id="step1-personal-info">
                             <!-- personal info  -->
                             <div class="col-lg-12">
                                 <div class="apply_info_text text-left">
@@ -65,32 +66,91 @@
                                     <input type="text" placeholder="Last Name (required*)"  required minlength="2" id="last-name">
                                 </div>
                             </div>
+                            <!-- btn  -->
+                            <div class="col-md-12">
+                                <div class="submit_btn" >
+                                    <button class="boxed-btn3"  type="submit"  id="personal-info-btn">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- step 2 -->
+                        <div class="row d-none" id="step2-mobile-money-info">
+                            <!-- mobile money info  -->
+                            <div class="col-lg-12">
+                                <div class="apply_info_text text-left">
+                                    <h1 class="text-center"><strong>Mobile Money Details</strong></h1>
+                                    <p class="text-center">This should be an active Money Number register in your name. <br> You will receive an OTP to your phone via sms.</p>
+                                </div>
+                            </div>
                             <!-- mobile money number  -->
                             <div class="col-md-12">
                                 <div class="single_field ">
-                                    <input type="number" placeholder="Mobile Money Number (0880526256)" minlength="2" class="d-none" id="mobile-money-number">
+                                    <input type="tel" placeholder="Mobile Money Number (0880526256)" minlength="10" maxlength="10"  id="mobile-money-number">
                                 </div>
                             </div>
-                            <!-- <div class="col-md-12">
-                                <div class="single_field">
-                                    <input type="number" placeholder="Enter OTP Code"  required minlength="2" id="otp-code">
+                        
+                            <div class="col-md-12">
+                                <div class="submit_btn" >
+                                    <button class="boxed-btn3" type="submit" id="mobile-money-number-submit-btn">Next</button>
                                 </div>
-                            </div> -->
-                            <!-- <div class="col-md-12">
-                                <div class="single_field">
-                                    <label for="last-name" class="text-primary"><strong>Make sure to enter a 4-digit PIN.</strong></label>
-                                    <input type="password" placeholder="PIN"  required minlength="2" id="last-name">
+                            </div>
+                        </div>
+                        <!-- step 3  -->
+                        <div class="row d-none" id="step3-confirm-mobile-money-info">
+                            <!-- otp info  -->
+                            <div class="col-lg-12">
+                                <div class="apply_info_text text-left">
+                                    <h1 class="text-center" id="form-header"><strong>Confirm Mobile Money Number</strong></h1>
+                                    <p class="text-center" id="form-body-copy">A code was sent to your number (0880543456), please enter below.</p>
                                 </div>
-                            </div> -->
-                           
-                            
-                            
+                            </div>
+                            <!-- otp  -->
+                            <div class="col-md-12">
+                                <div class="single_field ">
+                                    <input type="password"  minlength="4" maxlength="4"  id="otp-code">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="apply_info_text text-left">
+                                    <p>Didn't received code?<br> Wait 59 seconds or <a href="">resend code</a></p>
+                                </div>
+                            </div>
+                            <!-- btn  -->
+                            <div class="col-md-12">
+                                <div class="submit_btn" >
+                                    <button class="boxed-btn3" type="submit" id="confirm-mobile-money-number-submit-btn">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- step 4  -->
+                        <div class="row d-none" id="step4-pin-code-info">
+                            <!-- pin code info  -->
+                            <div class="col-lg-12">
+                                <div class="apply_info_text text-left">
+                                    <h1 class="text-center" id="form-header"><strong>Create a PIN Code</strong></h1>
+                                    <p class="text-center" id="form-body-copy">Create a 4-digits PIN code. To log in every time, you will use your PIN code.</p>
+                                </div>
+                            </div>
+                            <!-- pin code  -->
+                            <div class="col-md-12">
+                                <div class="single_field ">
+                                    <input type="password" placeholder="Enter a 4-digits PIN Code" minlength="2"  id="pin-code">
+                                </div>
+                            </div>
+                            <!-- confirm pin code  -->
+                            <div class="col-md-12">
+                                <div class="single_field ">
+                                    <input type="password" placeholder="Confirm PIN Code"  minlength="2"  id="confirmed-pin-code">
+                                </div>
+                            </div>
+                        
                             <div class="col-md-12">
                                 <div class="submit_btn" id="registration-btn">
                                     <button class="boxed-btn3" type="submit">Next</button>
                                 </div>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>

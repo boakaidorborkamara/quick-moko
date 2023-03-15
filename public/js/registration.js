@@ -1,76 +1,93 @@
 // form 
 let registration_form = document.getElementById('registration-form');
 
-// form header 
-let form_header = document.getElementById("form-header");
-let form_body_copy = document.getElementById('form-body-copy');
-
 // Personal Details fields 
+let personal_info_section = document.getElementById('step1-personal-info')
 let first_name = document.getElementById('first-name');
 let middle_name = document.getElementById('middle-name');
 let last_name = document.getElementById('last-name');
+let personal_info_submit_btn = document.getElementById('personal-info-btn');
 
-// mobile money details 
+// mobile money details  fields
+let mobile_money_info_section = document.getElementById('step2-mobile-money-info');
 let mobile_money_number = document.getElementById('mobile-money-number');
-let verify_mobile_money_number = document.getElementById('otp-code');
+let mobile_money_number_submit_btn = document.getElementById('mobile-money-number-submit-btn');
 
+// confirm mobile money info by entering otp code fields
+let confirm_mobile_money_info_section = document.getElementById('step3-confirm-mobile-money-info');
+let otp_code = document.getElementById('otp-code');
+let confirm_mobile_money_number_submit_btn = document.getElementById('confirm-mobile-money-number-submit-btn');
 
-// submit btn 
-let btn = document.getElementById('registration-btn');
-
-
-// control steps 
-let get_started_completed = false;
-let get_mobile_money_details_completed = false;
-
-
+// setup pin code fields
+let pin_code_info_section = document.getElementById('step4-pin-code-info');
+let pin_code = document.getElementById('pin-code');
+let confirmed_pin_code = document.getElementById('confirmed-pin-code');
 
 //Will save extracted data here
 let data = {};
 
 
-//implement submission of data when registration btn is clicked
-registration_form.addEventListener('submit', (e)=>{
+//==============================================================================
+
+
+//implement collection of personal info
+personal_info_submit_btn.addEventListener('click', (e)=>{
 
     e.preventDefault();
 
+    // add extracted personal info to data object 
     data.first_name = first_name.value;
     data.middle_name = middle_name.value;
     data.last_name = last_name.value;
-    get_started_completed = true;
 
-    if(get_started_completed === true){
+    console.log(data);
 
-        // change form header details
-        form_header.innerText = "Mobile Money Details";
-        form_body_copy.innerText = "This should be an active Money Number register in your name. \n You will receive an OTP to your phone via sms."
+    // hide personal info section 
+    hideElements(personal_info_section);
+    // show mobile money info section 
+    showElements(mobile_money_info_section);
+    
+});
 
-        // change dom elements 
-        hideElements(first_name, middle_name, last_name);
-        showElements(mobile_money_number);
-    }
+
+//implement collection of mobile money number
+mobile_money_number_submit_btn.addEventListener('click', (e)=>{
+
+    e.preventDefault();
+
+    // add extracted personal info to data object 
+    data.mobile_money_number = mobile_money_number.value;
+
+    console.log(data);
+    // hide mobile money info section 
+    hideElements(mobile_money_info_section);
+    // show confirm mobile money info section 
+    showElements(confirm_mobile_money_info_section);
+    
 
 });
 
 
-//////////////////////////////////////////////////////////////
+//implement collection and validation of otp code
+confirm_mobile_money_number_submit_btn.addEventListener('click', (e)=>{
+
+    e.preventDefault();
+
+    // add extracted personal info to data object 
+    data.otp_code = otp_code.value;
+
+    console.log(data);
+    // hide confirm mobile money info section 
+    hideElements(confirm_mobile_money_info_section);
+    // show confirm mobile money info section 
+    showElements(pin_code_info_section);
+    
+
+});
 
 
-// extract data from the form and sanitize it 
-function getFrontEndData (){
 
-    // extract values from field and add it to data object 
-    data.first_name = first_name.value;
-    data.middle_name = middle_name.value;
-    data.last_name = last_name.value;
-
-
-    return data;
-
-};
-
-
-/////////////////////////////////////////////////////////////
+//===============================================================================
 
 
 //send data to backend api
@@ -147,21 +164,16 @@ function sendDataToBackEnd(event){
 
 }
 
+//stop showing element in the DOM
+function hideElements(ele){
 
-function hideElements(...arg){
-    console.log(arg);
-    arg.forEach(ele=>{
-        console.log(ele);
-        ele.classList.add("d-none");
-    })
+    ele.classList.add("d-none");
+
 }
 
+//show hidden element in the DOM
+function showElements(ele){
 
-function showElements(...arg){
-    console.log(arg);
-    arg.forEach(ele=>{
-        // console.log(ele);
-        ele.classList.remove("d-none");
-        console.log(ele);
-    })
+    ele.classList.remove("d-none");
+
 }
