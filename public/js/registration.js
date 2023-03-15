@@ -1,3 +1,7 @@
+// result area 
+let result_area = document.getElementById('result-area');
+console.log(result_area);
+
 // form 
 let registration_form = document.getElementById('registration-form');
 
@@ -22,6 +26,8 @@ let confirm_mobile_money_number_submit_btn = document.getElementById('confirm-mo
 let pin_code_info_section = document.getElementById('step4-pin-code-info');
 let pin_code = document.getElementById('pin-code');
 let confirmed_pin_code = document.getElementById('confirmed-pin-code');
+let pin_code_submit_btn = document.getElementById('pin-code-submit-btn');
+console.log(pin_code_submit_btn);
 
 //Will save extracted data here
 let data = {};
@@ -68,7 +74,7 @@ mobile_money_number_submit_btn.addEventListener('click', (e)=>{
 });
 
 
-//implement collection and validation of otp code
+//implement collection and validation of OTP code
 confirm_mobile_money_number_submit_btn.addEventListener('click', (e)=>{
 
     e.preventDefault();
@@ -81,6 +87,50 @@ confirm_mobile_money_number_submit_btn.addEventListener('click', (e)=>{
     hideElements(confirm_mobile_money_info_section);
     // show confirm mobile money info section 
     showElements(pin_code_info_section);
+    
+
+});
+
+
+//implement collection and of PIN code
+pin_code_submit_btn.addEventListener('click', (e)=>{
+
+    e.preventDefault();
+
+
+    // get values from form fields 
+    let pincode_field_value = pin_code.value;
+    let confirmed_pincode_field_value = confirmed_pin_code.value;
+    console.log(pincode_field_value, confirmed_pincode_field_value);
+
+
+    // validate if pin codes match
+    if(pincode_field_value === confirmed_pincode_field_value){
+        data.pin_code = pincode_field_value;
+        console.log(data);
+    }
+    else{
+
+        // notify user that pin doesn't match 
+        result_area.classList.remove('d-none');
+        result_area.classList.add("bg-danger");
+        result_area.classList.add("text-light")
+        result_area.innerText = "PIN Code not match";
+
+        setTimeout(()=>{
+            result_area.classList.add("d-none");
+            // empty form field 
+            pin_code.value="";
+            confirmed_pin_code.value="";
+        }, 5000);
+
+    }
+
+    
+    // hide confirm mobile money info section 
+    // hideElements(confirm_mobile_money_info_section);
+    // show confirm mobile money info section 
+    // showElements(pin_code_info_section);
     
 
 });
