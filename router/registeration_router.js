@@ -18,32 +18,32 @@ router.post('/register', (req,res)=>{
 
     let result = "";
 
-    (async()=>{
+    // (async()=>{
 
-      try{
-        console.log("Async fnx running");
-        console.log("Async fnx running in try peri");
+    //   try{
+    //     console.log("Async fnx running");
+    //     console.log("Async fnx running in try peri");
 
-        await axios.post('http://localhost:3000/api/v1/clients', data)
-        .then(function (response) {
-          console.log(response.data);
-          result = response.data;
-          res.send(result);
-        })
+    //     await axios.post('http://localhost:3000/api/v1/clients', data)
+    //     .then(function (response) {
+    //       console.log(response.data);
+    //       result = response.data;
+    //       res.send(result);
+    //     })
         
 
 
-        // result = await axios.post('https://quickmokoapi.glitch.me/api/v1/clients', data);
-        // console.log(result);
+    //     // result = await axios.post('https://quickmokoapi.glitch.me/api/v1/clients', data);
+    //     // console.log(result);
   
-        // res.send(result);
-      }
-      catch(err){
-        console.log(err); 
-        res.send(err);
-      }
+    //     // res.send(result);
+    //   }
+    //   catch(err){
+    //     console.log(err); 
+    //     res.send(err);
+    //   }
      
-    })();
+    // })();
 })
 
 

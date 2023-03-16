@@ -30,7 +30,7 @@ let pin_code_submit_btn = document.getElementById('pin-code-submit-btn');
 console.log(pin_code_submit_btn);
 
 //Will save extracted data here
-let data = {};
+let frontend_data = {};
 
 
 //==============================================================================
@@ -42,11 +42,11 @@ personal_info_submit_btn.addEventListener('click', (e)=>{
     e.preventDefault();
 
     // add extracted personal info to data object 
-    data.first_name = first_name.value;
-    data.middle_name = middle_name.value;
-    data.last_name = last_name.value;
+    frontend_data.first_name = first_name.value;
+    frontend_data.middle_name = middle_name.value;
+    frontend_data.last_name = last_name.value;
 
-    console.log(data);
+    console.log(frontend_data);
 
     // hide personal info section 
     hideElements(personal_info_section);
@@ -62,9 +62,9 @@ mobile_money_number_submit_btn.addEventListener('click', (e)=>{
     e.preventDefault();
 
     // add extracted personal info to data object 
-    data.mobile_money_number = mobile_money_number.value;
+    frontend_data.mobile_money_number = mobile_money_number.value;
 
-    console.log(data);
+    console.log(frontend_data);
     // hide mobile money info section 
     hideElements(mobile_money_info_section);
     // show confirm mobile money info section 
@@ -80,9 +80,9 @@ confirm_mobile_money_number_submit_btn.addEventListener('click', (e)=>{
     e.preventDefault();
 
     // add extracted personal info to data object 
-    data.otp_code = otp_code.value;
+    frontend_data.otp_code = otp_code.value;
 
-    console.log(data);
+    console.log(frontend_data);
     // hide confirm mobile money info section 
     hideElements(confirm_mobile_money_info_section);
     // show confirm mobile money info section 
@@ -92,7 +92,7 @@ confirm_mobile_money_number_submit_btn.addEventListener('click', (e)=>{
 });
 
 
-//implement collection and of PIN code
+//implement collection and of PIN code and sending of data to the backend
 pin_code_submit_btn.addEventListener('click', (e)=>{
 
     e.preventDefault();
@@ -106,8 +106,11 @@ pin_code_submit_btn.addEventListener('click', (e)=>{
 
     // validate if pin codes match
     if(pincode_field_value === confirmed_pincode_field_value){
-        data.pin_code = pincode_field_value;
-        console.log(data);
+        frontend_data.pin_code = pincode_field_value;
+        console.log(frontend_data);
+
+        // send frontend data 
+        sendDataToBackEnd(frontend_data);
     }
     else{
 
@@ -125,12 +128,6 @@ pin_code_submit_btn.addEventListener('click', (e)=>{
         }, 5000);
 
     }
-
-    
-    // hide confirm mobile money info section 
-    // hideElements(confirm_mobile_money_info_section);
-    // show confirm mobile money info section 
-    // showElements(pin_code_info_section);
     
 
 });
@@ -141,15 +138,14 @@ pin_code_submit_btn.addEventListener('click', (e)=>{
 
 
 //send data to backend api
-function sendDataToBackEnd(event){
+function sendDataToBackEnd(data){
 
     // prevent form default behaviour
-    event.preventDefault();
+    // event.preventDefault();
 
-
-    // get data frontend data 
-    let frontend_data = getFrontEndData();
-    console.log('FRONTEND DATA', frontend_data);
+    let user_data = data;
+  
+    console.log('FRONTEND DATA', user_data);
 
     let url = '/register';
     
@@ -166,7 +162,7 @@ function sendDataToBackEnd(event){
 
 
     // scroll at the top of the page to show result alert 
-    window.scrollTo(0,0);
+    // window.scrollTo(0,0);
 
 
     // check if the result data returns
