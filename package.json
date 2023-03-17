@@ -26,6 +26,19 @@
     "jsonwebtoken": "^9.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "axios": "^1.3.3",
+    "base-64": "^1.0.0",
+    "base64-string": "^1.1.2",
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "generate-password": "^1.7.0",
+    "jsonwebtoken": "^9.0.0",
+    "sequelize": "^6.28.0",
+    "sqlite": "^4.1.2",
+    "sqlite3": "^5.1.4",
+    "uuid": "^9.0.0"
   }
 }
