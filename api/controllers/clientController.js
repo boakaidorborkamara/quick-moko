@@ -23,7 +23,7 @@ const client_create = async (req, res)=>{
         // get data from frontend
         let new_client_details = req.body; 
         console.log(new_client_details);
-
+ 
 
         //encrypt user password or pin
         const plain_password = new_client_details.pin_code;

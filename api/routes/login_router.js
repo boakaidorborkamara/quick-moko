@@ -3,8 +3,14 @@ const router = express.Router();
 let {logUserIn} = require('../controllers/loginController')
 
 
+// Enable display of login form 
+router.get('/login', (req,res)=>{
+    res.render('../views/login');
+});
+
+
 //implement login on post
-router.post('/api/v1/login', logUserIn);
+router.post('/login', logUserIn);
 
 
 module.exports = router;

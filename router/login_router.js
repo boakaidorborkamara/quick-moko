@@ -16,78 +16,78 @@ router.get('/login', (req,res)=>{
 
 
 //Enable collection of user login info while also allowing them to login
-router.post('/login', (req, res)=>{
+// router.post('/login', (req, res)=>{
 
-    // frontend data 
-    let data = req.body;
-    console.log(data);
-
-
-    //store result after submission here
-    let result = "";
+//     // frontend data 
+//     let data = req.body;
+//     console.log(data);
 
 
-    //send data to core api
-    (async()=>{ 
-
-      try{
-        await axios.post('http://localhost:3000/api/v1/login', data)
-        .then(function (response) {
-
-          // store data from response
-          result = response.data;
+//     //store result after submission here
+//     let result = "";
 
 
-          // Check if user user credential was correct
-          console.log(result)
-          if(result.code === 0){
+//     //send data to core api
+//     (async()=>{ 
 
-            //configure and create a sign token
-            const maxAge = 3 * 60 * 60; //token life span 
-            const token =  jwt.sign(
-                {user_momo_number: result.existing_user.mobile_money_number, user_NIN_number: result.existing_user.NIN_number  },
-                jwtSecret,
-                {
-                expiresIn: maxAge, // 3hrs in sec
-                }
-            );
+//       try{
+//         await axios.post('http://localhost:3000/api/v1/login', data)
+//         .then(function (response) {
+
+//           // store data from response
+//           result = response.data;
 
 
-            //  configure and send cookie to client 
-            res.cookie("jwt", token, {
-                httpOnly: true,
-                maxAge: maxAge * 1000, // 3hrs in ms
-            });
+//           // Check if user user credential was correct
+//           console.log(result)
+//           if(result.code === 0){
+
+//             //configure and create a sign token
+//             const maxAge = 3 * 60 * 60; //token life span 
+//             const token =  jwt.sign(
+//                 {user_momo_number: result.existing_user.mobile_money_number, user_NIN_number: result.existing_user.NIN_number  },
+//                 jwtSecret,
+//                 {
+//                 expiresIn: maxAge, // 3hrs in sec
+//                 }
+//             );
 
 
-            // add page redirection link to result object 
-            result["redirectURL"] = "/dashboard";
-
-            //send updated object
-            res.send(result);
-            return;
-          }
+//             //  configure and send cookie to client 
+//             res.cookie("jwt", token, {
+//                 httpOnly: true,
+//                 maxAge: maxAge * 1000, // 3hrs in ms
+//             });
 
 
-          //Send error messages
-          res.send(result);
+//             // add page redirection link to result object 
+//             result["redirectURL"] = "/dashboard";
 
-        })
+//             //send updated object
+//             res.send(result);
+//             return;
+//           }
+
+
+//           //Send error messages
+//           res.send(result);
+
+//         })
     
-      }
-      catch(error){
+//       }
+//       catch(error){
 
-        res.status(400).json({
-          message: "An error occurred",
-          error: error.message,
-        });
+//         res.status(400).json({
+//           message: "An error occurred",
+//           error: error.message,
+//         });
 
-      }
+//       }
      
-    })();
+//     })();
 
 
-})
+// })
 
 
 module.exports = router; 
