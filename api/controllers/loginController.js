@@ -10,10 +10,6 @@ const jwtSecret = '9c1bcf23c2cd0fb8e0563fdd63343ec4220750129ae617d703383d6cfcf60
 // include client model or db
 const db = require('../../config/db_config').clients_table;
 
-
-/////////////////////////////////////////////////////////////
-
-
 //configure response object
 let res_obj = {code: 0, message:"modify message"};
 
@@ -62,9 +58,28 @@ let logUserIn = async (req, res)=>{
 
                 // checks if result is true, means the passwords are the same
                 if(result) {
+
+                    //configure and create a sign token
+                    const maxAge = 3 * 60 * 60; //token life span 
+                    const token =  jwt.sign(
+                        {user_momo_number: result.existing_user.mobile_money_number, user_NIN_number: result.existing_user.NIN_number  },
+                        jwtSecret,
+                        {
+                        expiresIn: maxAge, // 3hrs in sec
+                        }
+                    );
+
+
+                    //  configure and send cookie to client 
+                    res.cookie("jwt", token, {
+                        httpOnly: true,
+                        maxAge: maxAge * 1000, // 3hrs in ms
+                    });
+
                     res.status(201).json({
                         code: 0,
                         message: "User successfully Logged in",
+                        redirectURL : "/dashboard",
                         existing_user
                     });
                 } else {

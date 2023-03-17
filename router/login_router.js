@@ -28,7 +28,7 @@ router.post('/login', (req, res)=>{
 
 
     //send data to core api
-    (async()=>{
+    (async()=>{ 
 
       try{
         await axios.post('http://localhost:3000/api/v1/login', data)
