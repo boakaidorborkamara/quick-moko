@@ -127,7 +127,7 @@ pin_code_submit_btn.addEventListener('click', (e)=>{
             // empty form field 
             pin_code.value="";
             confirmed_pin_code.value="";
-        }, 5000);
+        }, 4000);
 
     }
     
@@ -172,14 +172,15 @@ function sendDataToBackEnd(data){
         if(data.code === 0){
 
            //display result div with positive result
+            result_area.classList.remove("d-none");
+            result_area.classList.remove("bg-danger");
             result_area.innerHTML = data.message;
-        
-            result_area.style.display = "block";
-            
+
+            // hide result area after five seconds of displaying results 
             setTimeout(() => {
-                result_area.style.display = "none";
+                result_area.classList.add('d-none');
                 window.location.href = "/";
-            }, 5000);
+            }, 4000);
 
             return;
         }
