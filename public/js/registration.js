@@ -10,6 +10,7 @@ let personal_info_section = document.getElementById('step1-personal-info')
 let first_name = document.getElementById('first-name');
 let middle_name = document.getElementById('middle-name');
 let last_name = document.getElementById('last-name');
+let nin_number = document.getElementById('nin-number');
 let personal_info_submit_btn = document.getElementById('personal-info-btn');
 
 // mobile money details  fields
@@ -45,6 +46,7 @@ personal_info_submit_btn.addEventListener('click', (e)=>{
     frontend_data.first_name = first_name.value;
     frontend_data.middle_name = middle_name.value;
     frontend_data.last_name = last_name.value;
+    frontend_data.nin_number = nin_number.value;
 
     console.log(frontend_data);
 
@@ -147,7 +149,7 @@ function sendDataToBackEnd(data){
   
     console.log('FRONTEND DATA', user_data);
 
-    let url = '/register';
+    let url = '/api/v1/clients';
     
     fetch(url, {
         method: 'POST',
@@ -159,7 +161,7 @@ function sendDataToBackEnd(data){
     .then((response) => response.json())
     .then((data) => {
     console.log('DATA', data)
-
+    return;
 
     // scroll at the top of the page to show result alert 
     // window.scrollTo(0,0);
