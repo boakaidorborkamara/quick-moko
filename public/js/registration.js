@@ -161,10 +161,9 @@ function sendDataToBackEnd(data){
     .then((response) => response.json())
     .then((data) => {
     console.log('DATA', data)
-    return;
 
     // scroll at the top of the page to show result alert 
-    // window.scrollTo(0,0);
+    window.scrollTo(0,0);
 
 
     // check if the result data returns

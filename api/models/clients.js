@@ -22,11 +22,11 @@ const Client = (sequelize)=>{
       type: DataTypes.STRING,
       allowNull: false
     },
-    otp: {
+    otp_code: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    pin: {
+    pin_code: { 
       type: DataTypes.STRING, 
       allowNull: false
     },
@@ -99,7 +99,6 @@ const Client = (sequelize)=>{
     },
     guarantor_home_address: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     guarantor_phone_number: {
       type: DataTypes.STRING,

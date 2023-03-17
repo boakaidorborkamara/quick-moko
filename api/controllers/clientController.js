@@ -15,65 +15,62 @@ let res_obj = {code: 0, message: "Ok"};
 // Handle creation of client on POST
 const client_create = async (req, res)=>{
 
-    try{
+    try{ 
 
         // get data from frontend
         let new_client_details = req.body; 
         console.log(new_client_details)
 
-        //generate and add password to new client details
-        // console.log('running new client pass')
-        // let new_client_password = await generateRegisteredUserPassword();
-        // console.log(console.log("IN CLIENT CONTROLLER", new_client_password));
-        // new_client_details.password = new_client_password;
-        // console.log(new_client_details);
 
         // get NIN number from frontend 
-        // let NIN_number_from_frontend = new_client_details.NIN_number;
+        let NIN_number_from_frontend = new_client_details.nin_number;
 
 
         //check in database if the user already exist
-        // let existing_client = await db.findOne({
-        //     where: {NIN_number: NIN_number_from_frontend}
-        // });
+        let existing_client = await db.findOne({
+            where: {NIN_number: NIN_number_from_frontend}
+        });
 
 
         // notify user if the user already exist
-        // if(!existing_client){
+        if(!existing_client){
 
-        //     // Add new user if not exist 
-        //     const client = await db.create(new_client_details);
+            console.log("Client don't esist.");
 
-        //     // modify response object
-        //     res_obj.code = 0;
-        //     res_obj.message = "Registration Successful";
-        //     console.log(res_obj);
+            // Add new user if not exist 
+            const client = await db.create(new_client_details);
 
-        //     // send registration sucessful sms Notification
-        //     let new_user_contact = new_client_details.contact_number;
-        //     let new_user_firstname = new_client_details.first_name;
+            // modify response object
+            res_obj.code = 0;
+            res_obj.message = "Registration Successful";
+            console.log(res_obj);
+
+            // send registration sucessful sms Notification
+
+            // let new_user_contact = new_client_details.contact_number;
+            // let new_user_firstname = new_client_details.first_name;
             
  
-        //     // format new user contact number 
-        //     new_user_contact = new_user_contact.substring(1);
-        //     console.log(new_user_contact);
-        //     registrationSucessfulSmsNotification(new_user_contact, new_user_firstname);
+            // format new user contact number 
+            // new_user_contact = new_user_contact.substring(1);
+            // console.log(new_user_contact);
+            // registrationSucessfulSmsNotification(new_user_contact, new_user_firstname);
 
 
-        //     JSON.stringify(res_obj);
-        //     res.status(201).send(res_obj); 
-        //     return;    
-        // }
-        // else{
+            JSON.stringify(res_obj);
+            res.status(201).send(res_obj); 
+            return;    
+        }
+        else{
 
-        //     // Notify that user exist
-        //     res_obj.code = 1;
-        //     res_obj.message = "User already exist, check your NIN Number!";
-        //     console.log(res_obj)
+            // Notify that user exist
+            res_obj.code = 1;
+            res_obj.message = "User already exist, check your NIN Number!";
+            console.log(res_obj)
 
-        //     JSON.stringify(res_obj);
-        //     res.status(403 ).send(res_obj); 
-        // }
+            JSON.stringify(res_obj);
+            res.status(403 ).send(res_obj); 
+        }
         
     }
     catch(err){
