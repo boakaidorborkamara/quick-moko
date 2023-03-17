@@ -1,7 +1,10 @@
-const { response } = require('express');
+const {response } = require('express');
 const {Sequelize} = require('sequelize');
+const bcrypt = require('bcrypt');
 const {registrationSucessfulSmsNotification} = require('../helper/sendSMS');
 const {generateRegisteredUserPassword} = require('../helper/generatePassword');
+const {hashUserPassword} = require('../helper/hashUserPassword');
+
 
 
 // include client model
@@ -19,7 +22,15 @@ const client_create = async (req, res)=>{
 
         // get data from frontend
         let new_client_details = req.body; 
-        console.log(new_client_details)
+        console.log(new_client_details);
+
+
+        //encrypt user password or pin
+        const plain_password = new_client_details.pin_code;
+        const hashed_password = await hashUserPassword(plain_password);
+        new_client_details.pin_code = hashed_password;
+        console.log(new_client_details);
+
 
 
         // get NIN number from frontend 
