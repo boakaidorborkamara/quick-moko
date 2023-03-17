@@ -3121,7 +3121,7 @@ p #amount {
 
 /* line 7, ../../Arafath/CL/December/234. Finance/HTML/scss/_bradcam.scss */
 .bradcam_bg_3 {
-  background-image: url(../img/banner/doc-banner.jpg);
+  background-image: url(../img/banner/hero-banner-with-girl-n-phone.jpg);
 }
 
 /* line 10, ../../Arafath/CL/December/234. Finance/HTML/scss/_bradcam.scss */
@@ -3150,7 +3150,7 @@ p #amount {
   height: 100%;
   z-index: -1;
   content: '';
-  background: #040E27;
+  /* background: #040E27; */
   opacity: .7;
 }
 
