@@ -900,8 +900,8 @@ h3 {
 
 /* line 16, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
 .header-area .main-header-area {
-  background: #fff;
-  /* background: transparent; */
+  /* background: #fff; */
+  background: transparent;
   padding: 0px 150px;
 }
 
@@ -1156,10 +1156,7 @@ h3 {
 
 /* line 215, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu ul li a:hover {
-  background-color: #008037;
-  padding-left: 15px;
-  padding-right: 15px;
-  color: white;
+  color: #008037;
 }
 
 /* line 219, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
@@ -1253,6 +1250,11 @@ h3 {
 .header-area .main-header-area.sticky .main-menu {
   padding: 0;
 }
+
+.header-area .main-header-area.sticky .main-menu ul li a {
+  color: white !important;
+}
+
 
 /* line 294, ../../Arafath/CL/December/234. Finance/HTML/scss/_header.scss */
 .header-area .main-header-area.sticky .header_bottom_border {
@@ -1380,14 +1382,14 @@ h3 {
 
 /* line 10, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
 .slider_area::before {
-  background: #040E27;
+  background: #ffffff;
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   content: '';
-  opacity: .5;
+  opacity: 0;
 }
 
 /* line 20, ../../Arafath/CL/December/234. Finance/HTML/scss/_slider.scss */
