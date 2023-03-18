@@ -20,81 +20,93 @@ let res_obj = {code: 0, message:"modify message"};
 //Implement login for existing user
 let logUserIn = async (req, res)=>{
 
+    console.log("USER REQUEST BODY", req.body)
     // extract login credentials from request body 
-    const {momo_number, password} = req.body;
+    const {momo_number, pin_code} = req.body;
 
 
+    console.log("MOMO NUMBER", momo_number);
+    console.log("PIN CODE", pin_code);
     // Validate if user provided both momo number and password 
-    if(!momo_number || !password){
-        res_obj.code = 1;
-        res_obj.message = "Momo Number and Passwords are required"
-        res.status(400).send(JSON.stringify(res_obj));
+    // if(!momo_number || !pin_code){
+    //     res_obj.code = 1;
+    //     res_obj.message = "Momo Number and PIN are required"
+    //     res.status(400).send(JSON.stringify(res_obj));
 
-    }
+    // }
 
 
     // move on to logging user in if values for both fieds were provided
-    try{
+    // try{
 
-        //check in database if the user already exist
-        let existing_user = await db.findOne({
-            where: {mobile_money_number: momo_number}
-        });
+    //     //check in database if the user already exist
+    //     let existing_user = await db.findOne({
+    //         where: {mobile_money_number: momo_number}
+    //     });
+
+    //     console.log("EXISTING USER", existing_user.dataValues);
 
 
-        if(!existing_user){
-            res_obj.code = 1;
-            res_obj.message = "Momo number or password is incorrect";
-            // res_obj = JSON.stringify(res_obj);
-            res.send(res_obj);
-        }
-        else{
+    //     if(!existing_user){
+    //         res_obj.code = 1;
+    //         res_obj.message = "Momo number or PIN is incorrect";
+    //         // res_obj = JSON.stringify(res_obj);
+    //         res.send(res_obj);
+    //     }
+    //     else{
 
-            // check if password is correct by comparing given password with hashed password
-            bcrypt.compare(password, existing_user.password)
-            .then(function (result) {
+    //         console.log("USER RAW PIN", pin_code);
+    //         console.log("db password", existing_user.dataValues.pin_code);
+    //         // check if password or pin is correct by comparing given password with hashed password
+    //         bcrypt.compare(pin_code, existing_user.dataValues.pin_code)
+    //         .then(function (result) {
                 
-                console.log(result);
+    //             console.log(result);
 
-                // checks if result is true, means the passwords are the same
-                if(result) {
+    //             // checks if result is true, means the passwords are the same
+    //             if(result) {
 
-                    //configure and create a sign token
-                    const maxAge = 3 * 60 * 60; //token life span 
-                    const token =  jwt.sign(
-                        {user_momo_number: result.existing_user.mobile_money_number, user_NIN_number: result.existing_user.NIN_number  },
-                        jwtSecret,
-                        {
-                        expiresIn: maxAge, // 3hrs in sec
-                        }
-                    );
+    //                 //configure and create a sign token
+    //                 const maxAge = 3 * 60 * 60; //token life span 
+    //                 const token =  jwt.sign(
+    //                     {user_momo_number: result.existing_user.mobile_money_number, user_NIN_number: result.existing_user.NIN_number  },
+    //                     jwtSecret,
+    //                     {
+    //                     expiresIn: maxAge, // 3hrs in sec
+    //                     }
+    //                 );
 
 
-                    //  configure and send cookie to client 
-                    res.cookie("jwt", token, {
-                        httpOnly: true,
-                        maxAge: maxAge * 1000, // 3hrs in ms
-                    });
+    //                 //  configure and send cookie to client 
+    //                 res.cookie("jwt", token, {
+    //                     httpOnly: true,
+    //                     maxAge: maxAge * 1000, // 3hrs in ms
+    //                 });
 
-                    res.status(201).json({
-                        code: 0,
-                        message: "User successfully Logged in",
-                        redirectURL : "/dashboard",
-                        existing_user
-                    });
-                } else {
-                //   res.status(400).json({code:1,  message: "Login not succesful" });
-                  res.send({code:1,  message: "Password incorrect." })
-                }
-            });
+    //                 res.status(201).json({
+    //                     code: 0,
+    //                     message: "User successfully Logged in",
+    //                     redirectURL : "/dashboard",
+    //                     existing_user
+    //                 });
+    //             } else {
+    //             //   res.status(400).json({code:1,  message: "Login not succesful" });
+    //               res.send({code:1,  message: "Password incorrect." })
+    //             }
+    //         })
+    //         .catch((err)=>{
+    //             if(err){
+    //                 console.log(err);
+    //             }
+    //         })
 
-            // res.send({"msg":"User exist"});
+    //         // res.send({"msg":"User exist"});
             
-        }
-    }
-    catch(err){
-        console.log(err)
-    }
+    //     }
+    // }
+    // catch(err){
+    //     console.log(err)
+    // }
 
 }
 

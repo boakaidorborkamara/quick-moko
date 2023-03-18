@@ -24,7 +24,7 @@ function getFrontEndData(event){
     
     // add login data to data object 
     data.momo_number = momo_number.value;
-    data.password = password.value;
+    data.pin_code = password.value;
 
     return data;
 }
@@ -52,6 +52,7 @@ function submitData(event){
     .then((response) => response.json())
     .then((data) => {
         
+        console.log("Data is returning")
         console.log(data);
         // if(data.code === 0){
         //     window.location.href = data.redirectURL;
