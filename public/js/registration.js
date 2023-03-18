@@ -40,13 +40,13 @@ let frontend_data = {};
 //implement collection of personal info
 personal_info_submit_btn.addEventListener('click', (e)=>{
 
-    e.preventDefault();
+    e.preventDefault(); 
 
     // add extracted personal info to data object 
     frontend_data.first_name = first_name.value;
     frontend_data.middle_name = middle_name.value;
     frontend_data.last_name = last_name.value;
-    frontend_data.nin_number = nin_number.value;
+    frontend_data.NIN_number = nin_number.value;
 
     console.log(frontend_data);
 

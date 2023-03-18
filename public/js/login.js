@@ -23,7 +23,7 @@ login_result_box.style.display = "none"
 function getFrontEndData(event){
     
     // add login data to data object 
-    data.momo_number = momo_number.value;
+    data.mobile_money_number = momo_number.value;
     data.pin_code = password.value;
 
     return data;

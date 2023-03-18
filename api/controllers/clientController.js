@@ -34,7 +34,7 @@ const client_create = async (req, res)=>{
 
 
         // get NIN number from frontend 
-        let NIN_number_from_frontend = new_client_details.nin_number;
+        let NIN_number_from_frontend = new_client_details.NIN_number;
 
 
         //check in database if the user already exist
