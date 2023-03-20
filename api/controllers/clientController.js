@@ -142,7 +142,7 @@ const client_details = async (req, res)=>{
         res_obj.code = 0;
         res_obj.message = client_details;
 
-        res.status(200).send(JSON.stringify(res_obj));
+        res.status(200).send(res_obj);
         return;
     }
 

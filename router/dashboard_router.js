@@ -9,6 +9,9 @@ const {auth} = require('../middleware/auth')
 
 
 router.get('/dashboard',  async (req,res)=>{
+
+    let host = req.headers.host;
+
     const token = req.cookies.jwt;
     
     let dynamic_login_in_user_id = "";
@@ -26,15 +29,20 @@ router.get('/dashboard',  async (req,res)=>{
             //start
             let logged_in_user_id = decodedToken.user_NIN_number;
 
-
+            let url =  `//${host}/api/v1/loan_transactions/${decodedToken.user_NIN_number}`;
+            console.log(url);
 
             (async ()=>{
             
 
                 console.log(decodedToken);
-                await axios.get(`http://localhost:3000/api/v1/loan_transactions/${decodedToken.user_NIN_number}`)
+
+                // get loan transactions 
+                await axios.get(url)
                 .then((response)=>{
-                    user_loan_transactions = response.data.loan_transaction;
+                    console.log("FIRST AXIOS WORKING")
+                    user_loan_transactions = response.data;
+                    console.log(user_loan_transactions);
                     // console.log("RESULT", response_result);
                     // res.render('../views/dashboard');
                     // res.render('../views/dashboard', {user:response_result});
@@ -46,14 +54,16 @@ router.get('/dashboard',  async (req,res)=>{
                     }
                 })
 
-                axios.get("http://localhost:3000/api/v1/clients/"+logged_in_user_id)
-                .then((response)=>{
-                    let response_result = response.data;
-                    // console.log(response_result);
-                    // res.render('../views/dashboard');
-                    console.log("RESULT", user_loan_transactions);
 
-                    res.render('../views/dashboard', {user:response_result, loan_transactions:user_loan_transactions});
+                // get logged in user details 
+                axios.get(`//${host}/api/v1/clients/${logged_in_user_id}`)
+                .then((response)=>{
+                    let response_result = response;
+                    console.log("USER", response_result.data.message);
+                    // res.render('../views/dashboard');
+                    // console.log("RESULT", user_loan_transactions);
+
+                    res.render('../views/dashboard', {user:response_result.data, loan_transactions:user_loan_transactions});
 
                 })
                 .catch((err)=>{

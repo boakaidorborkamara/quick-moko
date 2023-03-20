@@ -54,23 +54,20 @@ function submitData(event){
         
         console.log("Data is returning")
         console.log(data);
-        // if(data.code === 0){
-        //     window.location.href = data.redirectURL;
-        //     return;
-        // }
+        if(data.code === 0){
+            window.location.href = data.redirectURL;
+            return;
+        }
 
         
         // // display error messages 
-        // login_result_box.innerHTML = data.message;
+        login_result_box.innerHTML = data.message;
         
-        // login_result_box.style.display = "block";
+        login_result_box.style.display = "block";
             
-        // setTimeout(() => {
-        //     login_result_box.style.display = "none";
-        // }, 4000);
-        
-
-        
+        setTimeout(() => {
+            login_result_box.style.display = "none";
+        }, 4000);
 
     });
         
