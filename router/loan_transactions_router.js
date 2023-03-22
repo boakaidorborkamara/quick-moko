@@ -115,7 +115,7 @@ router.post('/request_loan', async (req,res)=>{
     //Send Data to Backend
     try{
 
-        await axios.post('//${host}/api/v1/receive_loan', loan_info)
+        await axios.post(`//${host}/api/v1/receive_loan`, loan_info)
         .then(function (response) {
         //   console.log(response.data);
           result = response.data;
@@ -124,7 +124,7 @@ router.post('/request_loan', async (req,res)=>{
         });
 
 
-        await axios.post('//${host}/api/v1/loan_transactions', result)
+        await axios.post(`//${host}/api/v1/loan_transactions`, result)
         .then(function (response) {
         //   console.log(response.data);
           result = response.data;
@@ -150,7 +150,7 @@ async function upDateLoanTransactionModel(transaction){
      //Send Data to Backend
      try{
 
-        await axios.post('//${host}/api/v1/loan_transactions', transaction)
+        await axios.post(`//${host}/api/v1/loan_transactions`, transaction)
         .then(function (response) {
           console.log(response.data);
           result = response.data;
