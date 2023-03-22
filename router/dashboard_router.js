@@ -10,6 +10,7 @@ const {auth} = require('../middleware/auth')
 
 router.get('/dashboard',  async (req,res)=>{
 
+    // current host 
     let host = req.headers.host;
 
     const token = req.cookies.jwt;
@@ -40,13 +41,9 @@ router.get('/dashboard',  async (req,res)=>{
                 // get loan transactions 
                 await axios.get(url)
                 .then((response)=>{
-                    console.log("FIRST AXIOS WORKING")
-                    user_loan_transactions = response.data;
-                    console.log(user_loan_transactions);
-                    // console.log("RESULT", response_result);
-                    // res.render('../views/dashboard');
-                    // res.render('../views/dashboard', {user:response_result});
 
+                    user_loan_transactions = response.data;
+                    
                 })
                 .catch((err)=>{
                     if(err){
@@ -58,11 +55,8 @@ router.get('/dashboard',  async (req,res)=>{
                 // get logged in user details 
                 axios.get(`//${host}/api/v1/clients/${logged_in_user_id}`)
                 .then((response)=>{
-                    let response_result = response;
-                    console.log("USER", response_result.data.message);
-                    // res.render('../views/dashboard');
-                    // console.log("RESULT", user_loan_transactions);
 
+                    let response_result = response;
                     res.render('../views/dashboard', {user:response_result.data, loan_transactions:user_loan_transactions});
 
                 })
