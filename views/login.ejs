@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>Tiny Dashboard - A Bootstrap Dashboard Template</title>
+    <title>Quick Moko - Login</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="css/simplebar.css">
     <!-- Fonts CSS -->
@@ -27,7 +27,7 @@
             <img src="/img/quickmoko_logo.png" alt="">
           </a>
           <!-- <h1 class="h6 mb-3">Login by providing the details below</h1> -->
-          <div class="alert alert-danger" role="alert" id="login-result-box">
+          <div class="alert alert-danger d-none" role="alert" id="login-result-box">
             This is a danger alert—check it out!
           </div>
           <div class="form-group mt-4">
@@ -36,11 +36,15 @@
           </div>
           <div class="form-group">
             <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" class="form-control form-control-lg" placeholder="Password" required>
+            <input type="password" id="password" class="form-control form-control-lg" placeholder="PIN Code" required>
           </div>
           
           <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-          <p class="mt-5 mb-3 text-muted">Powered By: <a href="">Sogital Lab</a></p>
+          <!-- <p class="mt-5 mb-3 text-muted">Powered By: <a href="">Sogital Lab</a></p> -->
+
+          <div class="form-group">
+            <p class="mt-2">Don't have an account? <span><a href="/register">Register</a></span></p>
+          </div>
         </form>
       </div>
     </div>

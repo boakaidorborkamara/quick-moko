@@ -14,7 +14,7 @@ let data = {};
 login_form.addEventListener('submit', submitData);
 
 // hide result area 
-login_result_box.style.display = "none"
+// login_result_box.style.display = "none"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -62,12 +62,14 @@ function submitData(event){
         
         // // display error messages 
         login_result_box.innerHTML = data.message;
-        
-        login_result_box.style.display = "block";
+        login_result_box.classList.remove("d-none");
             
+        //hide error message
         setTimeout(() => {
-            login_result_box.style.display = "none";
-        }, 4000);
+            momo_number.value = "";
+            password.value = "";
+            login_result_box.classList.add("d-none");
+        }, 2000);
 
     });
         
