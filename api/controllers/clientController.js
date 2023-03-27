@@ -2,8 +2,8 @@ const {response } = require('express');
 const {Sequelize} = require('sequelize');
 const bcrypt = require('bcrypt');
 const {registrationSucessfulSmsNotification} = require('../helper/sendSMS');
-const {generateRegisteredUserPassword} = require('../helper/generatePassword');
 const {hashUserPassword} = require('../helper/hashUserPassword');
+const {generateOTP} = require('../helper/generateOTP');
 
 
 
@@ -24,6 +24,8 @@ const client_create = async (req, res)=>{
         let new_client_details = req.body; 
         console.log(new_client_details);
  
+        console.log("GENERATING OTP", generateOTP);
+        
 
         //encrypt user password or pin
         const plain_password = new_client_details.pin_code;

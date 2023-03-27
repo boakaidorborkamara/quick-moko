@@ -3,6 +3,8 @@ const { json } = require('sequelize');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const jwtSecret = '9c1bcf23c2cd0fb8e0563fdd63343ec4220750129ae617d703383d6cfcf60f1138d37c';
+const {generateOTP} = require('../helper/generateOTP');
+
 
 /////////////////////////////////////////////////////////////
 
@@ -51,6 +53,7 @@ let logUserIn = async (req, res)=>{
             res_obj.code = 1;
             res_obj.message = "Momo number or PIN is incorrect";
             // res_obj = JSON.stringify(res_obj);
+            generateOTP()
             res.send(res_obj);
         }
         else{
