@@ -30,6 +30,8 @@ const dashboard_router = require('./router/dashboard_router');
 const loan_calculator_router = require('./router/loan_calculator_router');
 const apply_for_loan_router = require('./router/apply_for_loan_router');
 const view_loan_transaction_router = require('./router/loan_transactions_router');
+const verify_otp_router = require('./router/verify_otp_router');
+
 
 // JSON DATA ROUTES 
 const index_routers = require('./api/routes/index_router');
@@ -57,6 +59,7 @@ app.use(payment_transactions_router);
 app.use(vendors_router);
 // app.use(login_router);
 app.use(deposit_router);
+// app.use(verify_otp_router);
 
 
 app.listen(PORT, ()=>{

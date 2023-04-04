@@ -1,9 +1,12 @@
 // Get HTML elements 
+let loan_request_form = document.getElementById("loan-request-form");
 let loan_amount = document.getElementById("loan-amount");
 let payment_date = document.getElementById("payment-date");
 let estimated_payment_result = document.getElementById("estimated-payment-result");
 let apply_for_loan_btn = document.getElementById("apply-for-loan-btn");
 let result_area = document.getElementById("result-area");
+let loan_result_area = document.getElementById('loan-result-area');
+
 
 
 // hide result area 
@@ -50,20 +53,8 @@ payment_date.addEventListener("input", ()=>{
 
 apply_for_loan_btn.addEventListener('click', ()=>{
 
-    // display error messages 
-    // result_area.innerHTML = "We are working on intergrating MoMo to receive your loans";
-    // result_area.innerHTML = `Requested loan amount: ${loan_amount_value}`;
-
-        
-    // result_area.style.display = "block";
-        
-    // setTimeout(() => {
-    //     result_area.style.display = "none";
-    //     window.location.reload();
-    // }, 7000);
     console.log("requesting for payments")
     console.log(loan_amount_value)
-    // requestedCash(loan_amount_value);
 
     //Request for loan
     let url = "/request_loan"
@@ -85,8 +76,17 @@ apply_for_loan_btn.addEventListener('click', ()=>{
     .then((response) => response.json())
     .then((data)=>{
         console.log(data);
-        window.location.href = "/loan-transaction"
-        return data;
+      
+        // window.location.href = "/loan-transaction"
+        loan_request_form.style.display = "none";
+        loan_result_area.classList.remove("d-none");
+
+        setTimeout(()=>{
+            window.location.href = "/loan-transaction"
+        }, 5000)
+
+        
+        return data; 
     })
     .catch((err)=>{
         console.log(err);
@@ -189,3 +189,5 @@ async function requestedCash(amount){
         console.log(err);
     }
 }
+
+console.log(loan_result_area);

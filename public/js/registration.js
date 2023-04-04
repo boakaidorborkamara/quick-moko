@@ -1,3 +1,5 @@
+// const { verify } = require("jsonwebtoken");
+
 // result area 
 let result_area = document.getElementById('result-area');
 console.log(result_area);
@@ -66,6 +68,10 @@ mobile_money_number_submit_btn.addEventListener('click', (e)=>{
     // add extracted personal info to data object 
     frontend_data.mobile_money_number = mobile_money_number.value;
 
+    // verify number using OTP 
+    // alert("Running OTP FNX")
+    // verifyPhoneNumberWithOTP(frontend_data.mobile_money_number);
+    
     console.log(frontend_data);
     // hide mobile money info section 
     hideElements(mobile_money_info_section);
@@ -219,9 +225,32 @@ function hideElements(ele){
 
 }
 
+
 //show hidden element in the DOM
 function showElements(ele){
 
     ele.classList.remove("d-none");
+
+}
+
+
+// verify user phone number using OTP 
+function verifyPhoneNumberWithOTP(user_phone_number){
+
+    let phone_number = {phone:user_phone_number};
+
+    alert(phone_number)
+
+    fetch("/verify_otp", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(phone_number)
+    })
+    .then((response) => response.json())
+    .then((data) => {
+    console.log('DATA', data)
+    })
 
 }

@@ -14,8 +14,12 @@
       <%- include('./partials/dashboard-sidebar'); -%>
 
 
+      
+      
+
       <!-- main content section  -->
       <main role="main" class="main-content">
+
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
@@ -33,6 +37,15 @@
                     </div>
                 </div>
               </div>
+
+
+             
+              <!-- display message after loan application  -->
+              <div class="alert alert-success text-center d-none " role="alert" id="loan-result-area">
+                Loan Request Successful
+              </div>
+
+
 
               <!-- dynamicly add loan transaction records from db to loan transaction table  -->
               <% if (loan_transactions) { %>
