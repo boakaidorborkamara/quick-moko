@@ -14,7 +14,7 @@ result_area.style.display = "none";
 
 
 // Iniatialize interest rate
-let interest_rate = 0.0033;
+let interest_rate = 0.008;
 
 
 //Create variables that store actual value user request as loan amount and payment date
@@ -105,16 +105,16 @@ function estimatePayBackAmount(){
 
     if(loan_amount_value){
             
+            // get number of days that should pass before user pay back with interest 
             let days = getNumberOfDaysBeforeLoanIsPayback(loan_request_date, payment_date_value);
             days = Math.abs(days); //change negative number to positive
 
 
-            // Implement interst formula to get amount user needs to pay back 
+            // Implement interest formula to get amount user need to pay back 
             let sub_calculation = 1+interest_rate*days ;
             payback_amount = loan_amount_value * sub_calculation;
 
-            console.log(sub_calculation);
-            console.log(payment_date);
+
 
             estimated_payment_result.innerHTML = `$${payback_amount} LRD`;
 
