@@ -1,5 +1,7 @@
 // const { verify } = require("jsonwebtoken");
 
+
+
 // result area 
 let result_area = document.getElementById('result-area');
 console.log(result_area);
@@ -63,20 +65,24 @@ personal_info_submit_btn.addEventListener('click', (e)=>{
 //implement collection of mobile money number
 mobile_money_number_submit_btn.addEventListener('click', (e)=>{
 
+
+    
+
     e.preventDefault();
 
-    // add extracted personal info to data object 
-    frontend_data.mobile_money_number = mobile_money_number.value;
 
-    // verify number using OTP 
-    // alert("Running OTP FNX")
-    // verifyPhoneNumberWithOTP(frontend_data.mobile_money_number);
-    
-    console.log(frontend_data);
+    let user_mobile_money_number = mobile_money_number.value;
+
+    verifyPhoneNumberWithOTP(user_mobile_money_number);
+    // add extracted personal info to data object 
+    // frontend_data.mobile_money_number = mobile_money_number.value;
+
+   
+    // console.log(frontend_data);
     // hide mobile money info section 
-    hideElements(mobile_money_info_section);
+    // hideElements(mobile_money_info_section);
     // show confirm mobile money info section 
-    showElements(confirm_mobile_money_info_section);
+    // showElements(confirm_mobile_money_info_section);
     
 
 });
@@ -162,7 +168,7 @@ function sendDataToBackEnd(data){
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(frontend_data)
+        body: frontend_data
     })
     .then((response) => response.json())
     .then((data) => {
@@ -238,15 +244,16 @@ function showElements(ele){
 function verifyPhoneNumberWithOTP(user_phone_number){
 
     let phone_number = {phone:user_phone_number};
+    phone_number = JSON.stringify(phone_number);
 
-    alert(phone_number)
+    console.log(phone_number);
 
-    fetch("/verify_otp", {
+    fetch("/verify", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(phone_number)
+        body: phone_number
     })
     .then((response) => response.json())
     .then((data) => {

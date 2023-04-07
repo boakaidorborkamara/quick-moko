@@ -4,7 +4,7 @@ const express = require('express');
 const cookieParser = require("cookie-parser");
 const cors = require('cors')
 const app = express();
-
+// const bodyParser = require('body-parser')
 
 // PORT 
 const PORT = process.env.PORT || 3700;
@@ -18,7 +18,10 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
-// app.use(cors());
+app.use(cors());
+
+// create application/x-www-form-urlencoded parser
+// app.use(bodyParser.urlencoded({ extended: false }));
 
 
 
@@ -59,7 +62,7 @@ app.use(payment_transactions_router);
 app.use(vendors_router);
 // app.use(login_router);
 app.use(deposit_router);
-// app.use(verify_otp_router);
+app.use(verify_otp_router);
 
 
 app.listen(PORT, ()=>{
