@@ -1,7 +1,7 @@
 const express = require('express');
 const { json } = require('sequelize');
 const router = express.Router();
-// const {generateOTP} = require('../api/helper/generateOTP');
+const {generateOTP} = require('../api/helper/generateOTP');
 
 
 router.get('/verify', (req,res)=>{
@@ -14,8 +14,9 @@ router.get('/verify', (req,res)=>{
 router.post('/verify', (req,res)=>{
     console.log('Post Working');
     console.log(req.body);
+    generateOTP();
     res.send(JSON.stringify({msg:"OTP working"}));
-    // generateOTP();
+    
 });
 
 

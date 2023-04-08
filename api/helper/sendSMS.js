@@ -1,7 +1,9 @@
 const axios = require('axios');
+const { v4: uuidv4 } = require('uuid');
+
 
 // generate message id 
-let message_id = 0;
+// let message_id = 0;
 
 
 //Send sms notification after a user sucessfully registers
@@ -89,6 +91,48 @@ const sendRegisterUserPassword = async (name, password, nin_number)=>{
 }
 
 
+//Send sms via sms
+const sendOtpSms = async (receipt_number, otp)=>{
+
+  let message_id = uuidv4(); // message id
+
+  //new message to be sent out
+  let message_content = `Your OTP to verify your number is ${otp}.`;
+
+
+  // configure message before sending to sms server
+  let new_message_info = {
+      senderName: "QuickMoko",
+      messages: [
+        {
+          to: receipt_number,
+          body: message_content,
+          extMessageId: message_id
+        }
+      ]
+  }
+
+
+  //send new sms
+  await axios.post('https://developer.lonotalk.com/api/v1/sms', new_message_info, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'apiKey': 'tCvqgcZp0faUyBWRzbCln7O6H6SoeSnhT5A6L57SeZRnaUe2Dkce6yZyYBo5xXXU'
+      }
+  })
+  .then(function (response) {
+      let data = response.data;
+      console.log(data);
+  })
+  .catch(function (error) {
+      console.log(error);
+  });
+
+  return 0;
+}
+
+
 module.exports = {
-    registrationSucessfulSmsNotification
+    registrationSucessfulSmsNotification,
+    sendOtpSms
 }
