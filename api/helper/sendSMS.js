@@ -94,6 +94,10 @@ const sendRegisterUserPassword = async (name, password, nin_number)=>{
 //Send sms via sms
 const sendOtpSms = async (receipt_number, otp)=>{
 
+  // format phone number
+  let phone_code = 231;
+  let formatted_phone_number = `${phone_code}${receipt_number.substring(1)}`;
+
   let message_id = uuidv4(); // message id
 
   //new message to be sent out
@@ -105,13 +109,14 @@ const sendOtpSms = async (receipt_number, otp)=>{
       senderName: "QuickMoko",
       messages: [
         {
-          to: receipt_number,
+          to: formatted_phone_number,
           body: message_content,
           extMessageId: message_id
         }
       ]
   }
 
+  console.log("MESSAGE ID", message_id)
 
   //send new sms
   await axios.post('https://developer.lonotalk.com/api/v1/sms', new_message_info, {
