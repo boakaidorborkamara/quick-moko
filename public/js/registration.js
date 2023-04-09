@@ -26,6 +26,8 @@ let mobile_money_number_submit_btn = document.getElementById('mobile-money-numbe
 let confirm_mobile_money_info_section = document.getElementById('step3-confirm-mobile-money-info');
 let otp_code = document.getElementById('otp-code');
 let confirm_mobile_money_number_submit_btn = document.getElementById('confirm-mobile-money-number-submit-btn');
+let resend_otp_option = document.getElementById("resend-otp-option");
+console.log(resend_otp_option);
 
 // setup pin code fields
 let pin_code_info_section = document.getElementById('step4-pin-code-info');
@@ -110,8 +112,6 @@ confirm_mobile_money_number_submit_btn.addEventListener('click', (e)=>{
     else{
         alert("Invalid OTP");
     }
-    
-    
 
 });
 
@@ -155,6 +155,21 @@ pin_code_submit_btn.addEventListener('click', (e)=>{
     
 
 });
+
+
+// implement resending of otp 
+resend_otp_option.addEventListener('click', (e)=>{
+
+    e.preventDefault();
+
+    let user_mobile_money_number = mobile_money_number.value;
+
+    verifyPhoneNumberWithOTP(user_mobile_money_number);
+
+    console.log(frontend_data);
+    
+});
+
 
 
 
