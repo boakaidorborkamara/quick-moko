@@ -257,7 +257,21 @@ function verifyPhoneNumberWithOTP(user_phone_number){
     })
     .then((response) => response.json())
     .then((data) => {
-    console.log('DATA', data)
+        if(data.code === 0){
+            console.log('DATA', data);
+
+            // save otp to local storage 
+            localStorage.setItem("OTP", data.otp);
+            const OTP = localStorage.getItem("OTP");
+
+            //delete otp after a specific time period
+            setTimeout(()=>{
+                localStorage.removeItem("OTP");
+                const OTP = localStorage.getItem("OTP");
+            }, 30000);
+
+            console.log(OTP)
+        }
     })
 
 }

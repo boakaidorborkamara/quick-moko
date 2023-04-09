@@ -6,16 +6,16 @@ const {sendOtpSms} = require('../api/helper/sendSMS');
 
 
 
-router.get('/verify', (req,res)=>{
-    console.log('OTP Working');
-    console.log(req.body);
+// router.get('/verify', (req,res)=>{
+//     console.log('OTP Working');
+//     console.log(req.body);
 
-    let generated_otp =  generateOTP();
-    let {phone} = req.body;
-    console.log("PHONE", phone);
-    res.send(JSON.stringify({msg:"OTP working"}));
+//     let generated_otp =  generateOTP();
+//     let {phone} = req.body;
+//     console.log("PHONE", phone);
+//     res.send(JSON.stringify({msg:"OTP working"}));
 
-});
+// });
 
 router.post('/verify', (req,res)=>{
     console.log('OTP Working');
@@ -26,7 +26,8 @@ router.post('/verify', (req,res)=>{
 
     sendOtpSms(phone, generated_otp);
 
-    res.send(JSON.stringify({msg:"OTP working"}));
+    // res.send(JSON.stringify({otp:generated_otp}));
+    res.status(200).json({code:0, msg:"OTP generated", otp:generated_otp})
     
 });
 
