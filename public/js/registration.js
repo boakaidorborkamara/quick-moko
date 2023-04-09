@@ -298,3 +298,9 @@ function verifyPhoneNumberWithOTP(user_phone_number){
     })
 
 }
+
+
+//start count down after OTP is sent
+function startOtpTimer (){
+    
+}
