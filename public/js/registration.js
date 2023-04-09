@@ -75,14 +75,14 @@ mobile_money_number_submit_btn.addEventListener('click', (e)=>{
 
     verifyPhoneNumberWithOTP(user_mobile_money_number);
     // add extracted personal info to data object 
-    // frontend_data.mobile_money_number = mobile_money_number.value;
+    frontend_data.mobile_money_number = mobile_money_number.value;
 
    
-    // console.log(frontend_data);
+    console.log(frontend_data);
     // hide mobile money info section 
-    // hideElements(mobile_money_info_section);
+    hideElements(mobile_money_info_section);
     // show confirm mobile money info section 
-    // showElements(confirm_mobile_money_info_section);
+    showElements(confirm_mobile_money_info_section);
     
 
 });
@@ -97,10 +97,20 @@ confirm_mobile_money_number_submit_btn.addEventListener('click', (e)=>{
     frontend_data.otp_code = otp_code.value;
 
     console.log(frontend_data);
-    // hide confirm mobile money info section 
-    hideElements(confirm_mobile_money_info_section);
-    // show confirm mobile money info section 
-    showElements(pin_code_info_section);
+    let otp_from_backend = localStorage.getItem("OTP");
+    console.log("BE OTP", otp_from_backend);
+
+    if(frontend_data.otp_code === otp_from_backend){
+        alert("OTP correct")
+        // hide confirm mobile money info section 
+        hideElements(confirm_mobile_money_info_section);
+        // show confirm mobile money info section 
+        showElements(pin_code_info_section);
+    }
+    else{
+        alert("Invalid OTP");
+    }
+    
     
 
 });
@@ -257,21 +267,19 @@ function verifyPhoneNumberWithOTP(user_phone_number){
     })
     .then((response) => response.json())
     .then((data) => {
-        if(data.code === 0){
-            console.log('DATA', data);
+        console.log('DATA', data);
 
-            // save otp to local storage 
-            localStorage.setItem("OTP", data.otp);
+        // save otp to local storage 
+        localStorage.setItem("OTP", data.otp);
+        const OTP = localStorage.getItem("OTP");
+
+        //delete otp after a specific time period
+        setTimeout(()=>{
+            localStorage.removeItem("OTP");
             const OTP = localStorage.getItem("OTP");
+        }, 30000);
 
-            //delete otp after a specific time period
-            setTimeout(()=>{
-                localStorage.removeItem("OTP");
-                const OTP = localStorage.getItem("OTP");
-            }, 30000);
-
-            console.log(OTP)
-        }
+        console.log(OTP)
     })
 
 }
