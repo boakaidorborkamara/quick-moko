@@ -293,7 +293,7 @@ function verifyPhoneNumberWithOTP(user_phone_number){
         setTimeout(()=>{
             localStorage.removeItem("OTP");
             const OTP = localStorage.getItem("OTP");
-        }, 30000);
+        }, 50000);
 
         console.log(OTP)
     })
