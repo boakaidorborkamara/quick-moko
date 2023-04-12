@@ -1,7 +1,7 @@
 const {response } = require('express');
 const {Sequelize} = require('sequelize');
 const bcrypt = require('bcrypt');
-const {registrationSucessfulSmsNotification} = require('../helper/sendSMS');
+const {sendregistrationSucessfulSms} = require('../helper/sendSMS');
 const {hashUserPassword} = require('../helper/hashUserPassword');
 const {generateOTP} = require('../helper/generateOTP');
 
@@ -59,16 +59,14 @@ const client_create = async (req, res)=>{
             console.log(res_obj);
 
             // send registration sucessful sms Notification
-            registrationSucessfulSmsNotification()
-
-            // let new_user_contact = new_client_details.contact_number;
-            // let new_user_firstname = new_client_details.first_name;
+            console.log("Sending registration text");
+            let new_user_contact = new_client_details.mobile_money_number;
+            let new_user_firstname = new_client_details.first_name;
+            console.log("NEW CLIENT DETAILS", new_client_details);
+            console.log("USER CONTACT", new_user_contact);
+            console.log("USER FIRSTNAME", new_user_firstname);
             
- 
-            // format new user contact number 
-            // new_user_contact = new_user_contact.substring(1);
-            // console.log(new_user_contact);
-            // registrationSucessfulSmsNotification(new_user_contact, new_user_firstname);
+            sendregistrationSucessfulSms(new_user_contact, new_user_firstname);
 
 
             JSON.stringify(res_obj);

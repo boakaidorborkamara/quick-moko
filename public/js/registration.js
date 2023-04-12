@@ -2,6 +2,7 @@
 
 
 
+
 // result area 
 let result_area = document.getElementById('result-area');
 console.log(result_area);
@@ -193,7 +194,7 @@ function sendDataToBackEnd(data){
         headers: {
             'Content-Type': 'application/json'
         },
-        body: frontend_data
+        body: JSON.stringify(frontend_data)
     })
     .then((response) => response.json())
     .then((data) => {
