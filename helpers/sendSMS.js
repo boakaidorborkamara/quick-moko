@@ -35,19 +35,19 @@ const sendregistrationSucessfulSms = async (receipt_number, receipt_name)=>{
 
 
       // send new sms to user
-      await axios.post('https://developer.lonotalk.com/api/v1/sms', new_message_info, {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'apiKey': process.env.SMS_SERVER_API_KEY
-          }
-      })
-      .then(function (response) {
-          let data = response.data;
-          console.log(data);
-      })
-      .catch(function (error) {
-          console.log(error);
-      });
+      // await axios.post('https://developer.lonotalk.com/api/v1/sms', new_message_info, {
+      //     headers: {
+      //       'Content-Type': 'application/x-www-form-urlencoded',
+      //       'apiKey': process.env.SMS_SERVER_API_KEY
+      //     }
+      // })
+      // .then(function (response) {
+      //     let data = response.data;
+      //     console.log(data);
+      // })
+      // .catch(function (error) {
+      //     console.log(error);
+      // });
 
 
       return 0;
@@ -91,19 +91,19 @@ const sendOtpSms = async (receipt_number, otp)=>{
     }
 
     //send new message to user with OTP
-    await axios.post('https://developer.lonotalk.com/api/v1/sms', new_message_info, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'apiKey': process.env.SMS_SERVER_API_KEY
-        }
-    })
-    .then(function (response) {
-        let data = response.data;
-        console.log(data);
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+    // await axios.post('https://developer.lonotalk.com/api/v1/sms', new_message_info, {
+    //     headers: {
+    //       'Content-Type': 'application/x-www-form-urlencoded',
+    //       'apiKey': process.env.SMS_SERVER_API_KEY
+    //     }
+    // })
+    // .then(function (response) {
+    //     let data = response.data;
+    //     console.log(data);
+    // })
+    // .catch(function (error) {
+    //     console.log(error);
+    // });
     
     return 0;
   }

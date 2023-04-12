@@ -3,10 +3,10 @@ const DataTypes = require('sequelize').DataTypes;
 
 
 // import models 
-const ClientsModel = require('../api/models/clients');
-const LoanTransactionsModel = require('../api/models/loan_transtions');
-const PaymentTransactionsModel = require('../api/models/payment_transaction');
-const VendorsModel = require('../api/models/vendors');
+const ClientsModel = require('../models/clients');
+const LoanTransactionsModel = require('../models/loan_transtions');
+const PaymentTransactionsModel = require('../models/payment_transaction');
+const VendorsModel = require('../models/vendors');
 
 
 //create a new instance of sequelize and connect to database
@@ -36,7 +36,9 @@ let vendors_table = VendorsModel(sequelize);
 
 
 
-// SEQUELIZE ASSOCIATION starts >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// SEQUELIZE ASSOCIATION starts //////////////////////////////////////
+
+
 
 //Create one to many relationship with foreign key stored in loan_transaction table
 clients_table.hasMany(loan_transactions_table);
@@ -52,9 +54,9 @@ payment_transactions_table.belongsTo(clients_table);
 vendors_table.hasMany(payment_transactions_table);
 payment_transactions_table.belongsTo(vendors_table);
 
-// SEQUELIZE ASSOCIATION ends >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
+// SEQUELIZE ASSOCIATION ends /////////////////////////////////////////
 
 
 
