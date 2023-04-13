@@ -1,12 +1,3 @@
-// const { verify } = require("jsonwebtoken");
-
-
-
-
-// result area 
-let result_area = document.getElementById('result-area');
-console.log(result_area);
-
 // form 
 let registration_form = document.getElementById('registration-form');
 
@@ -37,19 +28,27 @@ let confirmed_pin_code = document.getElementById('confirmed-pin-code');
 let pin_code_submit_btn = document.getElementById('pin-code-submit-btn');
 console.log(pin_code_submit_btn);
 
+// result area 
+let result_area = document.getElementById('result-area');
+
 //Will save extracted data here
 let frontend_data = {};
 
 
-//==============================================================================
 
 
-//implement collection of personal info
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+//collect user personal infomation
 personal_info_submit_btn.addEventListener('click', (e)=>{
 
     e.preventDefault(); 
 
-    // add extracted personal info to data object 
+
+    // extract from form fields and add it to the frontend_data object 
     frontend_data.first_name = first_name.value;
     frontend_data.middle_name = middle_name.value;
     frontend_data.last_name = last_name.value;
@@ -57,85 +56,97 @@ personal_info_submit_btn.addEventListener('click', (e)=>{
 
     console.log(frontend_data);
 
-    // hide personal info section 
+
+    // take user to the next step in the registration process
     hideElements(personal_info_section);
-    // show mobile money info section 
     showElements(mobile_money_info_section);
     
 });
 
 
-//implement collection of mobile money number
+//collect user mobile money number
 mobile_money_number_submit_btn.addEventListener('click', (e)=>{
 
-
-    
-
+    // prevent element default behavior 
     e.preventDefault();
 
 
+    //extract user mobile money number from form 
     let user_mobile_money_number = mobile_money_number.value;
 
-    verifyPhoneNumberWithOTP(user_mobile_money_number);
-    // add extracted personal info to data object 
-    frontend_data.mobile_money_number = mobile_money_number.value;
 
-   
+    //send otp to verify user mobile money number
+    verifyPhoneNumberWithOTP(user_mobile_money_number);
+
+
+    // add extracted mobile money number to the frontend_data object 
+    frontend_data.mobile_money_number = mobile_money_number.value;
     console.log(frontend_data);
-    // hide mobile money info section 
+
+
+    // take user to the next step in the registration process
     hideElements(mobile_money_info_section);
-    // show confirm mobile money info section 
     showElements(confirm_mobile_money_info_section);
     
 
 });
 
 
-//implement collection and validation of OTP code
+//collect and validate user OTP code
 confirm_mobile_money_number_submit_btn.addEventListener('click', (e)=>{
 
     e.preventDefault();
 
-    // add extracted personal info to data object 
+
+    // otp user claim they received 
     frontend_data.otp_code = otp_code.value;
 
-    console.log(frontend_data);
+
+    //otp code that was actually generated and send to user via sms
     let otp_from_backend = localStorage.getItem("OTP");
     console.log("BE OTP", otp_from_backend);
 
+
+    // validate otp 
     if(frontend_data.otp_code === otp_from_backend){
-        alert("OTP correct")
-        // hide confirm mobile money info section 
+
+        // take user to the next step in the registration process
         hideElements(confirm_mobile_money_info_section);
-        // show confirm mobile money info section 
         showElements(pin_code_info_section);
+
     }
     else{
-        alert("Invalid OTP");
+
+        // notify user that otp is not validate 
+        alert("OTP expired or not valid, please request a new OTP");
+
     }
 
 });
 
 
-//implement collection and of PIN code and sending of data to the backend
+//collect user PIN
 pin_code_submit_btn.addEventListener('click', (e)=>{
 
     e.preventDefault();
 
 
-    // get values from form fields 
+    //extract PIN codes from user 
     let pincode_field_value = pin_code.value;
     let confirmed_pincode_field_value = confirmed_pin_code.value;
     console.log(pincode_field_value, confirmed_pincode_field_value);
 
 
-    // validate if pin codes match
+    // Check if value in confirm pincode and actual pincode field match
     if(pincode_field_value === confirmed_pincode_field_value){
+
+        // extract pincode from form and add it to frontend_data object 
         frontend_data.pin_code = pincode_field_value;
         console.log(frontend_data);
 
         // send frontend data 
         sendDataToBackEnd(frontend_data);
+
     }
     else{
 
@@ -146,10 +157,13 @@ pin_code_submit_btn.addEventListener('click', (e)=>{
         result_area.innerText = "PIN Code not match";
 
         setTimeout(()=>{
+
             result_area.classList.add("d-none");
+
             // empty form field 
             pin_code.value="";
             confirmed_pin_code.value="";
+
         }, 4000);
 
     }
@@ -174,83 +188,83 @@ resend_otp_option.addEventListener('click', (e)=>{
 
 
 
-//===============================================================================
+//HELPER FUNCTIONS BELOW //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//send data to backend api
+//responsible to send user data to backend api
 function sendDataToBackEnd(data){
-
-    // prevent form default behaviour
-    // event.preventDefault();
 
     let user_data = data;
   
-    console.log('FRONTEND DATA', user_data);
 
+    alert("sending of data working")
+    return
     let url = '/api/v1/clients';
     
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(frontend_data)
-    })
-    .then((response) => response.json())
-    .then((data) => {
-    console.log('DATA', data)
 
-    // scroll at the top of the page to show result alert 
-    window.scrollTo(0,0);
+//     fetch(url, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(frontend_data)
+//     })
+//     .then((response) => response.json())
+//     .then((data) => {
+//     console.log('DATA', data)
+
+//     // scroll at the top of the page to show result alert 
+//     window.scrollTo(0,0);
 
 
-    // check if the result data returns
-    if(data){
+//     // check if the result data returns
+//     if(data){
 
-        if(data.code === 0){
+//         if(data.code === 0){
 
-           //display result div with positive result
-            result_area.classList.remove("d-none");
-            result_area.classList.remove("bg-danger");
-            result_area.innerHTML = data.message;
+//            //display result div with positive result
+//             result_area.classList.remove("d-none");
+//             result_area.classList.remove("bg-danger");
+//             result_area.innerHTML = data.message;
 
-            // hide result area after five seconds of displaying results 
-            setTimeout(() => {
-                result_area.classList.add('d-none');
-                window.location.href = "/";
-            }, 4000);
+//             // hide result area after five seconds of displaying results 
+//             setTimeout(() => {
+//                 result_area.classList.add('d-none');
+//                 window.location.href = "/";
+//             }, 4000);
 
-            return;
-        }
-        else{
+//             return;
+//         }
+//         else{
 
-            //display result div with negative
-            result_area.removeAttribute("class", "alert-success");
-            result_area.setAttribute("class", "alert-danger");
-            result_area.style.padding = "20px 10px 20px 30px";
-            result_area.style.marginBottom = "20px"
-            result_area.innerHTML = data.message;
+//             //display result div with negative
+//             result_area.removeAttribute("class", "alert-success");
+//             result_area.setAttribute("class", "alert-danger");
+//             result_area.style.padding = "20px 10px 20px 30px";
+//             result_area.style.marginBottom = "20px"
+//             result_area.innerHTML = data.message;
         
-            result_area.style.display = "block";
+//             result_area.style.display = "block";
             
-            setTimeout(() => {
-                result_area.style.display = "none";
-            }, 5000);
+//             setTimeout(() => {
+//                 result_area.style.display = "none";
+//             }, 5000);
 
             
-        }
+//         }
         
         
-        return;
-    }
+//         return;
+//     }
 
-    // result_content.innerHTML = "Error, try again";
+//     // result_content.innerHTML = "Error, try again";
     
-  });
+//   });
 
 }
 
-//stop showing element in the DOM
+
+//hide DOM element if it is not hidden
 function hideElements(ele){
 
     ele.classList.add("d-none");
@@ -258,7 +272,7 @@ function hideElements(ele){
 }
 
 
-//show hidden element in the DOM
+//shows DOM element if it was hidden
 function showElements(ele){
 
     ele.classList.remove("d-none");
@@ -274,7 +288,7 @@ function verifyPhoneNumberWithOTP(user_phone_number){
 
     console.log(phone_number);
 
-    fetch("/verify", {
+    fetch("/verify/otp", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

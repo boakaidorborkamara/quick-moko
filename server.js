@@ -20,13 +20,13 @@ app.use(cors());
 
 //ROUTES 
 const index_router = require('./routes/index_router');
-const registration_router = require('./routes/registeration_router');
+const register_router = require('./routes/register_router');
 const login_router = require('./routes/login_router');
 // const dashboard_router = require('./routes/dashboard_router');
 // const loan_calculator_router = require('./routes/loan_calculator_router');
 // const apply_for_loan_router = require('./routes/apply_for_loan_router');
 // const view_loan_transaction_router = require('./routes/loan_transactions_router');
-// const verify_otp_router = require('./routes/verify_otp_router');
+const verify_router = require('./routes/verify_router');
 
 
 // JSON DATA ROUTES 
@@ -41,7 +41,7 @@ const login_router = require('./routes/login_router');
 
 // VIEWS
 app.use("/", index_router);
-app.use(registration_router);
+app.use(register_router);
 app.use(login_router);
 // app.use(dashboard_router);
 // app.use(loan_calculator_router);
@@ -55,7 +55,7 @@ app.use(login_router);
 // app.use(vendors_router);
 // app.use(login_router);
 // app.use(deposit_router);
-// app.use(verify_otp_router);
+app.use("/verify", verify_router);
 
 
 app.listen(PORT, ()=>{
