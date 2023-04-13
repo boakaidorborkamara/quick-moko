@@ -197,69 +197,69 @@ function sendDataToBackEnd(data){
     let user_data = data;
   
 
-    alert("sending of data working")
-    return
-    let url = '/api/v1/clients';
+    // alert("sending of data working")
+    // return
+    let url = '/register';
     
 
-//     fetch(url, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(frontend_data)
-//     })
-//     .then((response) => response.json())
-//     .then((data) => {
-//     console.log('DATA', data)
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(frontend_data)
+    })
+    .then((response) => response.json())
+    .then((data) => {
+    console.log('DATA', data)
 
-//     // scroll at the top of the page to show result alert 
-//     window.scrollTo(0,0);
+    // scroll at the top of the page to show result alert 
+    window.scrollTo(0,0);
 
 
-//     // check if the result data returns
-//     if(data){
+    // check if the result data returns
+    if(data){
 
-//         if(data.code === 0){
+        if(data.code === 0){
 
-//            //display result div with positive result
-//             result_area.classList.remove("d-none");
-//             result_area.classList.remove("bg-danger");
-//             result_area.innerHTML = data.message;
+           //display result div with positive result
+            result_area.classList.remove("d-none");
+            result_area.classList.remove("bg-danger");
+            result_area.innerHTML = data.message;
 
-//             // hide result area after five seconds of displaying results 
-//             setTimeout(() => {
-//                 result_area.classList.add('d-none');
-//                 window.location.href = "/";
-//             }, 4000);
+            // hide result area after five seconds of displaying results 
+            setTimeout(() => {
+                result_area.classList.add('d-none');
+                window.location.href = "/";
+            }, 4000);
 
-//             return;
-//         }
-//         else{
+            return;
+        }
+        else{
 
-//             //display result div with negative
-//             result_area.removeAttribute("class", "alert-success");
-//             result_area.setAttribute("class", "alert-danger");
-//             result_area.style.padding = "20px 10px 20px 30px";
-//             result_area.style.marginBottom = "20px"
-//             result_area.innerHTML = data.message;
+            //display result div with negative
+            result_area.removeAttribute("class", "alert-success");
+            result_area.setAttribute("class", "alert-danger");
+            result_area.style.padding = "20px 10px 20px 30px";
+            result_area.style.marginBottom = "20px"
+            result_area.innerHTML = data.message;
         
-//             result_area.style.display = "block";
+            result_area.style.display = "block";
             
-//             setTimeout(() => {
-//                 result_area.style.display = "none";
-//             }, 5000);
+            setTimeout(() => {
+                result_area.style.display = "none";
+            }, 5000);
 
             
-//         }
+        }
         
         
-//         return;
-//     }
+        return;
+    }
 
-//     // result_content.innerHTML = "Error, try again";
+    // result_content.innerHTML = "Error, try again";
     
-//   });
+  });
 
 }
 
