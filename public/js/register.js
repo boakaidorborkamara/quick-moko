@@ -56,10 +56,18 @@ personal_info_submit_btn.addEventListener('click', (e)=>{
 
     console.log(frontend_data);
 
+    // validate user info 
+    let validation_result = validate_user_personal_info(frontend_data);
 
-    // take user to the next step in the registration process
-    hideElements(personal_info_section);
-    showElements(mobile_money_info_section);
+
+    // check if validation was successful 
+    if(validation_result === 0){
+
+        // take user to the next step in the registration process
+        hideElements(personal_info_section);
+        showElements(mobile_money_info_section);
+        
+    }
     
 });
 
@@ -316,7 +324,87 @@ function verifyPhoneNumberWithOTP(user_phone_number){
 }
 
 
-//start count down after OTP is sent
-function startOtpTimer (){
+//validate user personal info by accepting an object 
+function validate_user_personal_info(user_info_object){
+
     
+    let user_nin_number = user_info_object.NIN_number; // user nin number 
+    let nin_number_lenght = user_nin_number.length; // user nin number lenght
+    console.log(nin_number_lenght);
+    
+
+    if(user_info_object.first_name === ""){
+
+        // highlight first name field 
+        highlightFormField(first_name);
+
+        return 1;
+
+    }
+    else if (user_info_object.last_name === ""){
+
+        // highlight last name field 
+        highlightFormField(last_name);
+
+        return 1;
+
+    }
+    else if (user_info_object.NIN_number === ""){
+
+        // highlight nin number field 
+       highlightFormField(nin_number);
+
+       return 1;
+
+    }
+    else if (nin_number_lenght < 8 || nin_number_lenght > 8 ){
+
+
+        let notification_message = "Invalid NIN number"
+        displayResultArea(notification_message);
+
+        setTimeout(() => {
+            highlightFormField(nin_number)
+        }, 4000)
+
+        return 1;
+
+    }
+    
+        
+    return 0;
+
+    
+
+}
+
+
+//hightlights form fields
+function highlightFormField(form_field_name){
+
+    // highlight last name field 
+    form_field_name.classList.add("border-danger");
+
+    setTimeout(()=>{
+        form_field_name.classList.remove("border-danger");
+        form_field_name.focus();
+    }, 2000);
+
+}
+
+
+// display the HTML element that notify user about what happenend 
+function displayResultArea(result_message){
+
+    //display result div with positive result
+    result_area.classList.remove("d-none");
+    result_area.classList.add("bg-danger");
+    result_area.classList.add("text-light");
+    result_area.innerHTML = result_message;
+
+    // hide result area after five seconds of displaying results 
+    setTimeout(() => {
+        result_area.classList.add('d-none');
+    }, 4000);
+
 }
