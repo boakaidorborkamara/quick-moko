@@ -38,13 +38,14 @@ const RegisterUser = async (req,res)=>{
         console.log(new_client_details);
 
 
-        // get user NIN number from frontend 
-        let NIN_number_from_frontend = new_client_details.NIN_number;
+        // get user mobile money number from frontend 
+        let frontend_mobile_money_number = new_client_details.mobile_money_number;
+        console.log("frontend momo", frontend_mobile_money_number);
 
 
         //check in database if user to be added already exist
         let existing_client = await db.findOne({
-            where: {NIN_number: NIN_number_from_frontend}
+            where: {mobile_money_number: frontend_mobile_money_number}
         });
 
 
