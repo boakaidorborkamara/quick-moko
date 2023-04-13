@@ -231,7 +231,7 @@ function sendDataToBackEnd(data){
             setTimeout(() => {
                 result_area.classList.add('d-none');
                 window.location.href = "/";
-            }, 4000);
+            }, 3000);
 
             return;
         }
@@ -248,7 +248,8 @@ function sendDataToBackEnd(data){
             
             setTimeout(() => {
                 result_area.style.display = "none";
-            }, 5000);
+                window.location.href = "/register";
+            }, 3000);
 
             
         }

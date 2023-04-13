@@ -77,7 +77,7 @@ const client_create = async (req, res)=>{
 
             // Notify that user exist
             res_obj.code = 1;
-            res_obj.message = "User already exist, check your NIN Number!";
+            res_obj.message = "User already exist!";
             console.log(res_obj)
 
             JSON.stringify(res_obj);
