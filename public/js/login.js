@@ -64,6 +64,7 @@ function submitData(event){
         login_result_box.innerHTML = data.message;
         login_result_box.classList.remove("d-none");
             
+        
         //hide error message
         setTimeout(() => {
             momo_number.value = "";
