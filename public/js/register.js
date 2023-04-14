@@ -40,7 +40,7 @@ let frontend_data = {};
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
+ 
 
 //collect user personal infomation
 personal_info_submit_btn.addEventListener('click', (e)=>{
@@ -57,7 +57,7 @@ personal_info_submit_btn.addEventListener('click', (e)=>{
     console.log(frontend_data);
 
     // validate user info 
-    let validation_result = validate_user_personal_info(frontend_data);
+    let validation_result = validate_user_personal_info_fields(frontend_data);
 
 
     // check if validation was successful 
@@ -83,18 +83,26 @@ mobile_money_number_submit_btn.addEventListener('click', (e)=>{
     let user_mobile_money_number = mobile_money_number.value;
 
 
-    //send otp to verify user mobile money number
-    verifyPhoneNumberWithOTP(user_mobile_money_number);
+    // validate mobile money field 
+    let validation_result = validate_mobile_money_info_field(user_mobile_money_number)
 
 
-    // add extracted mobile money number to the frontend_data object 
-    frontend_data.mobile_money_number = mobile_money_number.value;
-    console.log(frontend_data);
+    if(validation_result === 0){
+
+        //send otp to verify user mobile money number
+        verifyPhoneNumberWithOTP(user_mobile_money_number);
 
 
-    // take user to the next step in the registration process
-    hideElements(mobile_money_info_section);
-    showElements(confirm_mobile_money_info_section);
+        // add extracted mobile money number to the frontend_data object 
+        frontend_data.mobile_money_number = mobile_money_number.value;
+        console.log(frontend_data);
+
+
+        // take user to the next step in the registration process
+        hideElements(mobile_money_info_section);
+        showElements(confirm_mobile_money_info_section);
+
+    }
     
 
 });
@@ -116,7 +124,21 @@ confirm_mobile_money_number_submit_btn.addEventListener('click', (e)=>{
 
 
     // validate otp 
-    if(frontend_data.otp_code === otp_from_backend){
+    if(frontend_data.otp_code === ""){
+
+        // display an error message or notification
+        let notification_message = "Enter OTP code to validate your number"
+        displayResultArea(notification_message); 
+
+        // wait 4 seconds before hilighting the field with the issue 
+        setTimeout(() => {
+
+            highlightFormField(otp_code);
+
+        }, 4000)
+
+    }
+    else if(frontend_data.otp_code === otp_from_backend){
 
         // take user to the next step in the registration process
         hideElements(confirm_mobile_money_info_section);
@@ -125,8 +147,17 @@ confirm_mobile_money_number_submit_btn.addEventListener('click', (e)=>{
     }
     else{
 
-        // notify user that otp is not validate 
-        alert("OTP expired or not valid, please request a new OTP");
+        // display an error message or notification
+        let notification_message = "OTP not valid";
+        displayResultArea(notification_message); 
+
+        // wait 4 seconds before hilighting the field with the issue 
+        setTimeout(() => {
+
+            highlightFormField(otp_code);
+            otp_code.value = "";
+
+        }, 4000)
 
     }
 
@@ -145,12 +176,38 @@ pin_code_submit_btn.addEventListener('click', (e)=>{
     console.log(pincode_field_value, confirmed_pincode_field_value);
 
 
-    // Check if value in confirm pincode and actual pincode field match
-    if(pincode_field_value === confirmed_pincode_field_value){
+    // Validate if value in confirm pincode and actual pincode field match
+    if(pincode_field_value === ""){
+
+        // highlight the field with the error 
+        highlightFormField(pin_code);
+
+    }
+    else if(confirmed_pincode_field_value === ""){
+
+        // highlight the field with the error 
+        highlightFormField(confirmed_pin_code);
+
+    }
+    else if(pincode_field_value === confirmed_pincode_field_value){
+
+        // check if pincode include only numbers 
+        if(isNaN(pincode_field_value)){
+
+            // display an error message or notification
+            let notification_message = "PIN code should have only numbers"
+            displayResultArea(notification_message); 
+            pin_code.value = "";
+            confirmed_pin_code.value = "";
+
+            return;
+        }
+
 
         // extract pincode from form and add it to frontend_data object 
         frontend_data.pin_code = pincode_field_value;
         console.log(frontend_data);
+
 
         // send frontend data 
         sendDataToBackEnd(frontend_data);
@@ -196,7 +253,9 @@ resend_otp_option.addEventListener('click', (e)=>{
 
 
 
-//HELPER FUNCTIONS BELOW //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//HELPER FUNCTIONS DECLEARATION BELOW 
+
 
 
 //responsible to send user data to backend api
@@ -324,61 +383,6 @@ function verifyPhoneNumberWithOTP(user_phone_number){
 }
 
 
-//validate user personal info by accepting an object 
-function validate_user_personal_info(user_info_object){
-
-    
-    let user_nin_number = user_info_object.NIN_number; // user nin number 
-    let nin_number_lenght = user_nin_number.length; // user nin number lenght
-    console.log(nin_number_lenght);
-    
-
-    if(user_info_object.first_name === ""){
-
-        // highlight first name field 
-        highlightFormField(first_name);
-
-        return 1;
-
-    }
-    else if (user_info_object.last_name === ""){
-
-        // highlight last name field 
-        highlightFormField(last_name);
-
-        return 1;
-
-    }
-    else if (user_info_object.NIN_number === ""){
-
-        // highlight nin number field 
-       highlightFormField(nin_number);
-
-       return 1;
-
-    }
-    else if (nin_number_lenght < 8 || nin_number_lenght > 8 ){
-
-
-        let notification_message = "Invalid NIN number"
-        displayResultArea(notification_message);
-
-        setTimeout(() => {
-            highlightFormField(nin_number)
-        }, 4000)
-
-        return 1;
-
-    }
-    
-        
-    return 0;
-
-    
-
-}
-
-
 //hightlights form fields
 function highlightFormField(form_field_name){
 
@@ -407,4 +411,134 @@ function displayResultArea(result_message){
         result_area.classList.add('d-none');
     }, 4000);
 
+}
+
+
+//validate user personal info fields by accepting an object 
+function validate_user_personal_info_fields(user_info_object){
+
+    
+    let user_nin_number = user_info_object.NIN_number; // user nin number 
+    let nin_number_lenght = user_nin_number.length; // user nin number lenght
+    
+
+    // validate user personal info 
+    if(user_info_object.first_name === ""){
+
+        // highlight first name field if no value is found
+        highlightFormField(first_name);
+
+        return 1;
+
+    }
+    else if (user_info_object.last_name === ""){
+
+        // highlight last name field if no value is found
+        highlightFormField(last_name);
+
+        return 1;
+
+    }
+    else if (user_info_object.NIN_number === ""){
+
+        // highlight nin number field if no value is found
+       highlightFormField(nin_number);
+
+       return 1;
+
+    }
+    else if (nin_number_lenght < 8 || nin_number_lenght > 8 ){
+
+
+        // highlight nin number field if nin number is less than or greater than eight digits
+        let notification_message = "Invalid NIN number"
+        displayResultArea(notification_message);
+
+        setTimeout(() => {
+            highlightFormField(nin_number)
+        }, 4000)
+
+        return 1;
+
+    }
+    
+        
+    return 0;
+
+    
+
+}
+
+
+//validate mobile money field
+function validate_mobile_money_info_field(momo_number){
+
+    let user_mobile_money_number = momo_number;
+    let user_mobile_money_number_length = user_mobile_money_number.length;
+
+    if(momo_number === ""){
+
+        // check if mobile money field is empty 
+        highlightFormField(mobile_money_number);
+
+        return 1
+
+    }
+    if(user_mobile_money_number_length && user_mobile_money_number_length < 10){
+
+        // check if number enter didn't reach ten digits 
+
+        let notification_message = "Not a valid phone number"
+        // highlight mobile money field
+        displayResultArea(notification_message); 
+
+
+        setTimeout(() => {
+
+            highlightFormField(mobile_money_number);
+
+        }, 4000)
+
+        return 1;
+
+    }
+    
+    return 0;
+}
+
+
+//validate OTP comfirmation field
+function validate_otp_field(otp){
+
+    let user_otp = otp;
+    let user_otp_length = user_otp.length;
+
+    if(user_otp === ""){
+
+        // check if otp code field is empty 
+        highlightFormField(otp_code);
+
+        return 1
+
+    }
+    if(user_mobile_money_number_length && user_mobile_money_number_length < 10){
+
+        // check if number enter didn't reach ten digits 
+
+        let notification_message = "Not a valid phone number"
+        // highlight mobile money field
+        displayResultArea(notification_message); 
+
+
+        setTimeout(() => {
+
+            highlightFormField(mobile_money_number);
+
+        }, 4000)
+
+        return 1;
+
+    }
+    
+    return 0;
 }
