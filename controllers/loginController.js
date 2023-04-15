@@ -63,11 +63,11 @@ let logUserIn = async (req, res)=>{
                     //configure and create a sign token
                     const maxAge = 3 * 60 * 60; //token life span 
                     const token =  jwt.sign(
-                        {user_mobile_money_number: existing_user.mobile_money_number, user_NIN_number: existing_user.NIN_number  },
+                        {user_id: existing_user.id, user_mobile_money_number: existing_user.mobile_money_number  },
                         jwtSecret,
                         {
                         expiresIn: maxAge, // 3hrs in sec
-                        }
+                        } 
                     );
 
 
@@ -81,8 +81,7 @@ let logUserIn = async (req, res)=>{
                     res.status(201).json({
                         code: 0,
                         message: "User successfully Logged in",
-                        redirectURL : "/",
-                        // redirectURL : "/dashboard",
+                        redirectURL : "/dashboard",
                         existing_user
                     });
 

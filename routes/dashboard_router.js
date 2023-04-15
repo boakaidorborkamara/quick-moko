@@ -28,9 +28,9 @@ router.get('/dashboard',  async (req,res)=>{
           console.log("Logged in user", decodedToken);
 
             //start
-            let logged_in_user_id = decodedToken.user_NIN_number;
+            let logged_in_user_id = decodedToken.user_id;
 
-            let url =  `//${host}/api/v1/loan_transactions/${decodedToken.user_NIN_number}`;
+            let url =  `//${host}/api/v1/loan_transactions/${decodedToken.user_id}`;
             console.log(url);
 
             (async ()=>{

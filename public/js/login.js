@@ -2,19 +2,14 @@ let login_form = document.getElementById('login-form');
 let momo_number = document.getElementById('momo-number');
 let password = document.getElementById('password');
 let login_result_box = document.getElementById('login-result-box');
-// console.log(login_form, momo_number, password);
-// console.log(login_result_box);
 
 
 // save extracted data here 
 let data = {};
 
-
 //add functionality to submit btn 
 login_form.addEventListener('submit', submitData);
 
-// hide result area 
-// login_result_box.style.display = "none"
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -38,10 +33,8 @@ function submitData(event){
 
     let data = getFrontEndData();
 
-    console.log(data)
 
     let url = '/login';
-
     fetch(url, {
         method: 'POST',
         headers: {
@@ -52,24 +45,24 @@ function submitData(event){
     .then((response) => response.json())
     .then((data) => {
         
-        console.log("Data is returning")
-        console.log(data);
         if(data.code === 0){
             window.location.href = data.redirectURL;
             return;
         }
 
         
-        // // display error messages 
+        // display error messages 
         login_result_box.innerHTML = data.message;
         login_result_box.classList.remove("d-none");
             
-        
-        //hide error message
+
+        //hide error message after displaying it for three seconds
         setTimeout(() => {
+
             momo_number.value = "";
             password.value = "";
             login_result_box.classList.add("d-none");
+
         }, 2000);
 
     });

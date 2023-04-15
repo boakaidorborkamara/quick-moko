@@ -1,14 +1,14 @@
 const {response } = require('express');
 const {Sequelize} = require('sequelize');
 const bcrypt = require('bcrypt');
-const {sendregistrationSucessfulSms} = require('../helper/sendSMS');
-const {hashUserPassword} = require('../helper/hashUserPassword');
-const {generateOTP} = require('../helper/generateOTP');
+const {sendregistrationSucessfulSms} = require('../helpers/sendSMS');
+const {hashUserPassword} = require('../helpers/hashUserPassword');
+const {generateOTP} = require('../helpers/generateOTP');
 
 
 
 // include client model
-const db = require('../../config/db_config').clients_table;
+const db = require('../config/db_config').clients_table;
 
 
 //contain information for response after user implement a specific CRUD action
@@ -121,7 +121,7 @@ const client_details = async (req, res)=>{
 
     //get client details using the client id
     let client_details = await db.findOne({
-        where: {NIN_number: client_id}
+        where: {id: client_id}
     });
 
     console.log("Client Details", client_details);

@@ -23,15 +23,13 @@ const index_router = require('./routes/index_router');
 const register_router = require('./routes/register_router');
 const login_router = require('./routes/login_router');
 // const dashboard_router = require('./routes/dashboard_router');
-// const loan_calculator_router = require('./routes/loan_calculator_router');
 // const apply_for_loan_router = require('./routes/apply_for_loan_router');
 // const view_loan_transaction_router = require('./routes/loan_transactions_router');
 const verify_router = require('./routes/verify_router');
 
 
 // JSON DATA ROUTES 
-// const index_routers = require('./api/routes/index_router');
-// const client_routers = require('./api/routes/clients_router');
+const client_routers = require('./routes/clients_router');
 // const loan_transactions_router = require('./api/routes/loan_transactions_router');
 // const payment_transactions_router = require('./api/routes/payment_transactions_router');
 // const vendors_router = require('./api/routes/vendor_router');
@@ -40,7 +38,7 @@ const verify_router = require('./routes/verify_router');
 
 
 // VIEWS
-app.use("/", index_router);
+app.use(index_router);
 app.use(register_router);
 app.use(login_router);
 // app.use(dashboard_router);
@@ -49,7 +47,7 @@ app.use(login_router);
 // app.use(view_loan_transaction_router);
 
 // JSON Data 
-// app.use(client_routers);
+app.use(client_routers);
 // app.use(loan_transactions_router);
 // app.use(payment_transactions_router);
 // app.use(vendors_router);
