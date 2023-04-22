@@ -25,9 +25,28 @@ const loan_transaction_page = async (req, res)=>{
 
     try{
 
-        res.render('../views/loan-transaction');
-        return
-        res.send({"msg":"loan tranaction view loading"});
+
+         // get logged in user id 
+         let logged_in_user_id = "";
+         const token = req.cookies.jwt; 
+         jwt.verify(token, jwtSecret, (err, decodedToken) => {
+ 
+             logged_in_user_id = decodedToken.user_id;
+ 
+         });
+ 
+ 
+         // get loan transactions for logged in user 
+         const loan_transaction = await db.findAll({
+             where: {
+               id: logged_in_user_id
+             }
+         });
+
+
+        res.render('../views/loan-transaction', {loan_transactions:loan_transaction});
+        // return
+        // res.send({"msg":"loan tranaction view loading"});
 
     }
     catch(err){
