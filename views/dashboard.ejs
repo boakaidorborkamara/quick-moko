@@ -22,7 +22,7 @@
 
 
             <!-- personal info section  -->
-            <% if (user, loan_transactions) { %>
+            <% if (user) { %>
               <div class="row justify-content-center">
                 <div class="col-12">
                   <div class="row align-items-center mb-2">
@@ -47,14 +47,20 @@
                       <div class="card shadow eq-card mb-4">
                         <div class="card-body mb-n3">
                           <div class="row items-align-baseline h-100">
-                            <div class="col-md-4 my-3">
-                              <p class="mb-0"><strong class="mb-0 text-uppercase text-muted">Monthly Loan Limits</strong></p>
-                              <h3>$8000 LRD</h3>
-                            </div>
+                          
+                            <div class="col-md-4 border-top py-3">
+                              <p class="mb-1"><strong class="text-muted">Loan Limit</strong></p>
+                              <h4 class="mb-0">$8000 LRD</h4>
+                            </div> <!-- .col -->
                             
                             <div class="col-md-4 border-top py-3">
-                              <p class="mb-1"><strong class="text-muted">Total Avaliable Cash</strong></p>
+                              <p class="mb-1"><strong class="text-muted">Your Funds</strong></p>
                               <h4 class="mb-0">$8000 LRD</h4>
+                            </div> <!-- .col -->
+
+                            <div class="col-md-4 border-top py-3">
+                              <p class="mb-1"><strong class="text-muted">Borrowed Funds</strong></p>
+                              <h4 class="mb-0">$0 LRD</h4>
                             </div> <!-- .col -->
                           
                           </div>
@@ -67,18 +73,19 @@
                     
                     
               </div> <!-- .row -->
+            <% } %>
             
               <!-- personal info section ends  -->
 
-
+            
                 <!-- RECENT LOAN TRANSACTIONS  -->
-              
+              <% if (!loan_transactions) { %>
                 <div class="col-md-12 col-lg-12">
                 
                   <div class="card shadow ">
                     <div class="card-header row ">
                       <div class="col-6">
-                        <p>Recent Loan Transaction</p>
+                        <p>Loan Transaction History</p>
                       </div>
                       <div class="col-6">
                         <p class="text-right"><a href="/loan-transaction">View All</a></p>
@@ -120,9 +127,9 @@
                     
                   </div>
                 </div> <!-- Striped rows -->
-              <!-- Recent Loan transactions ends  -->
+                <!-- Recent Loan transactions ends  -->
 
-            <% } %>
+              <% } %>
 
           </div> <!-- .container-fluid -->
 
