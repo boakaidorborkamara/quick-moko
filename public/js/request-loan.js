@@ -57,12 +57,12 @@ apply_for_loan_btn.addEventListener('click', ()=>{
     console.log(loan_amount_value)
 
     //Request for loan
-    let url = "/request_loan"
+    let url = "/loan/request"
     let loan_info = {
         loan_amount: loan_amount_value,
         amount_to_payback: payback_amount,
         transaction_date: loan_request_date,
-        due_date: payment_date_value};
+        due_date: payment_date_value}; 
 
     console.log(loan_info)
 
@@ -82,7 +82,7 @@ apply_for_loan_btn.addEventListener('click', ()=>{
         loan_result_area.classList.remove("d-none");
 
         setTimeout(()=>{
-            window.location.href = "/loan-transaction"
+            window.location.href = "/loan-transactions"
         }, 5000)
 
         
