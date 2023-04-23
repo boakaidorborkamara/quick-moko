@@ -1,9 +1,7 @@
 const jwt = require("jsonwebtoken");
 const jwtSecret = "9c1bcf23c2cd0fb8e0563fdd63343ec4220750129ae617d703383d6cfcf60f1138d37c";
-// import loan transaction and clients_table from database model 
+// import loan transaction from database model 
 const db = require('../config/db_config').loan_transactions_table;
-const client = require('../config/db_config').clients_table;
-const loan_transaction_record = require('../config/db_config').loan_transactions_table;
 
 
 //=======================================================================================
@@ -13,7 +11,7 @@ let res_obj = {code: 0, message: "Ok"};
 
 
 //displays loan transaction page 
-const loan_transaction_page = async (req, res)=>{
+const loan_transaction_page = async (req, res)=>{ 
 
     try{
 
@@ -24,6 +22,7 @@ const loan_transaction_page = async (req, res)=>{
          jwt.verify(token, jwtSecret, (err, decodedToken) => {
  
              logged_in_user_id = decodedToken.user_id;
+
  
          });
  
@@ -31,11 +30,15 @@ const loan_transaction_page = async (req, res)=>{
          // get loan transactions for logged in user 
          const loan_transaction = await db.findAll({
              where: {
-               id: logged_in_user_id
+               clientId: logged_in_user_id
              }
          });
 
+         console.log(loan_transaction);
 
+
+        //  res.send({"result":loan_transaction, "id":logged_in_user_id});
+        //  return;
         res.render('../views/loan-transaction', {loan_transactions:loan_transaction});
 
     }
