@@ -79,7 +79,7 @@
 
             
                 <!-- RECENT LOAN TRANSACTIONS  -->
-              <% if (!loan_transactions) { %>
+              <% if (loan_transactions) { %>
                 <div class="col-md-12 col-lg-12">
                 
                   <div class="card shadow ">
@@ -88,7 +88,7 @@
                         <p>Loan Transaction History</p>
                       </div>
                       <div class="col-6">
-                        <p class="text-right"><a href="/loan-transaction">View All</a></p>
+                        <p class="text-right"><a href="/loan-transactions">View All</a></p>
                       </div>
 
                       <div class="card-body my-n2">

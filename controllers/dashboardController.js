@@ -32,7 +32,7 @@ let displayDashboardPage = async (req,res)=>{
 
         //get logged in user loan transaction records
         let logged_in_user_transactions = await loan_transaction_record.findAll({
-            where: {id: logged_in_user_id}
+            where: {clientId: logged_in_user_id}
         });
 
 

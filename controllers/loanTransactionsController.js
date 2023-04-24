@@ -1,7 +1,11 @@
 const jwt = require("jsonwebtoken");
 const jwtSecret = "9c1bcf23c2cd0fb8e0563fdd63343ec4220750129ae617d703383d6cfcf60f1138d37c";
+
 // import loan transaction from database model 
 const db = require('../config/db_config').loan_transactions_table;
+
+// import payment functionality
+let payment = require('../helpers/implementPayments');
 
 
 //=======================================================================================
@@ -13,8 +17,9 @@ let res_obj = {code: 0, message: "Ok"};
 //displays loan transaction page 
 const loan_transaction_page = async (req, res)=>{ 
 
-    try{
+    
 
+    try{
 
          // get logged in user id 
          let logged_in_user_id = "";
@@ -33,8 +38,6 @@ const loan_transaction_page = async (req, res)=>{
                clientId: logged_in_user_id
              }
          });
-
-         console.log(loan_transaction);
 
 
         //  res.send({"result":loan_transaction, "id":logged_in_user_id});
